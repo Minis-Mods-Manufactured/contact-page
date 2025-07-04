@@ -11,10 +11,10 @@
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
       flex-direction: column;
       align-items: center;
     }
+
     .card {
       max-width: 600px;
       background: white;
@@ -24,33 +24,40 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
       overflow: hidden;
     }
+
     .card img {
       width: 100%;
       height: auto;
       border-radius: 12px 12px 0 0;
       display: block;
     }
+
     h1, h2, p {
       text-align: center;
     }
+
     h1 {
       font-size: 24px;
       margin-top: 20px;
       margin-bottom: 5px;
     }
+
     h2 {
       font-size: 18px;
       color: #777;
       margin-bottom: 20px;
     }
+
     p {
       font-size: 16px;
       line-height: 1.5;
     }
+
     .contact {
       text-align: center;
       margin-top: 25px;
     }
+
     .contact a {
       display: inline-block;
       margin: 8px 10px;
@@ -58,9 +65,11 @@
       text-decoration: none;
       font-weight: bold;
     }
+
     .contact a:hover {
       text-decoration: underline;
     }
+
     .carousel-container {
       width: 100%;
       max-width: 600px;
@@ -70,21 +79,35 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .carousel {
       display: flex;
-      width: 900%;
-      animation: slide 36s infinite;
+      width: 1000%;
+      animation: slide 40s infinite;
     }
+
     .carousel-image {
       width: 100%;
       flex-shrink: 0;
     }
+
     @keyframes slide {
-      0% { transform: translateX(-0%); } 11% { transform: translateX(-100%); } 22% { transform: translateX(-200%); } 33% { transform: translateX(-300%); } 44% { transform: translateX(-400%); } 55% { transform: translateX(-500%); } 66% { transform: translateX(-600%); } 77% { transform: translateX(-700%); } 88% { transform: translateX(-800%); } 100% { transform: translateX(-900%); } 
+      0%   { transform: translateX(0%); }
+      10%  { transform: translateX(-100%); }
+      20%  { transform: translateX(-200%); }
+      30%  { transform: translateX(-300%); }
+      40%  { transform: translateX(-400%); }
+      50%  { transform: translateX(-500%); }
+      60%  { transform: translateX(-600%); }
+      70%  { transform: translateX(-700%); }
+      80%  { transform: translateX(-800%); }
+      90%  { transform: translateX(-900%); }
+      100% { transform: translateX(-1000%); }
     }
   </style>
 </head>
 <body>
+
   <div class="card">
     <img src="Business Card.jpg" alt="Aaren Strickland" />
     <h1>Aaren Strickland</h1>
@@ -107,16 +130,17 @@
 
   <div class="carousel-container">
     <div class="carousel">
-      <img src="Tidewater 4th of July.png" class="carousel-image" alt="Tidewater flyer">
-      <img src="Delight 4th of July.png" class="carousel-image" alt="Delight flyer">
-      <img src="Hey Jude 4th of July.png" class="carousel-image" alt="Hey flyer">
-      <img src="Jackson 4th of July.png" class="carousel-image" alt="Jackson flyer">
-      <img src="Jones 4th of July.png" class="carousel-image" alt="Jones flyer">
-      <img src="Providence 4th of July.png" class="carousel-image" alt="Providence flyer">
-      <img src="Raven 4th of July.png" class="carousel-image" alt="Raven flyer">
-      <img src="Shiloh 4th of July.png" class="carousel-image" alt="Shiloh flyer">
-      <img src="Sweet Pea 4th of July.png" class="carousel-image" alt="Sweet flyer">
+      <img src="Tidewater.png" class="carousel-image" alt="Tidewater flyer">
+      <img src="Delight.png" class="carousel-image" alt="Delight flyer">
+      <img src="HeyJude.png" class="carousel-image" alt="Hey flyer">
+      <img src="Jackson.png" class="carousel-image" alt="Jackson flyer">
+      <img src="Jones.png" class="carousel-image" alt="Jones flyer">
+      <img src="Providence.png" class="carousel-image" alt="Providence flyer">
+      <img src="Raven.png" class="carousel-image" alt="Raven flyer">
+      <img src="Shiloh.png" class="carousel-image" alt="Shiloh flyer">
+      <img src="Sweetpea.png" class="carousel-image" alt="Sweet flyer">
     </div>
   </div>
+
 </body>
 </html>
