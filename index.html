@@ -2,199 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aaren Strickland - Home Specialist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-Mods Contact Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background-color: #f5f5f5;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
-
-    .card {
-      max-width: 600px;
-      background: white;
-      padding: 0 30px 20px;
-      margin: 40px 20px;
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      overflow: hidden;
     }
-
-    .card img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px 12px 0 0;
-      display: block;
-    }
-
-    h1, h2, p {
+    h1, h2 {
       text-align: center;
+      color: #333;
     }
-
-    h1 {
-      font-size: 24px;
-      margin-top: 20px;
-      margin-bottom: 5px;
-    }
-
-    h2 {
-      font-size: 18px;
-      color: #777;
-      margin-bottom: 20px;
-    }
-
     p {
       font-size: 16px;
-      line-height: 1.5;
+      line-height: 1.6;
+      color: #444;
     }
-
     .contact {
       text-align: center;
-      margin-top: 25px;
+      margin-top: 20px;
     }
-
     .contact a {
-      display: inline-block;
-      margin: 8px 10px;
+      display: block;
+      margin: 5px 0;
       color: #007bff;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
-
     .homes-section {
-      max-width: 1000px;
-      padding: 20px;
-      margin: 20px;
-      background: white;
+      max-width: 1100px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
-
-    .homes-section h2 {
-      text-align: center;
-    }
-
-    .homes-grid {
+    .homes-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
+      padding: 0;
     }
-
-    .home-tile {
-      width: 200px;
+    .home-item {
+      width: 240px;
       text-align: center;
     }
-
-    .home-tile img {
+    .home-item img {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 8px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
-
-    .home-tile a {
+    .home-item a {
       text-decoration: none;
-      color: #007bff;
+      color: #0066cc;
       font-weight: bold;
-    }
-
-    .home-tile a:hover {
-      text-decoration: underline;
+      display: block;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-
-  <div class="card">
-    <img src="Business Card.jpg" alt="Aaren Strickland" />
-    <h1>Aaren Strickland</h1>
-    <h2>Home Specialist – Affordable Homes of Crestview</h2>
-    <p>
-      Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.
-    </p>
-    <p>
-      A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.
-    </p>
-    <p>
-      When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.
-    </p>
+  <div class="container">
+    <h1>Meet Aaren</h1>
+    <p>Aaren has extensive experience in both residential new construction and modular home sales. Her leadership in disaster relief housing after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
+    <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
+    <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.</p>
     <div class="contact">
-      <a href="tel:+18505648056">📱 Call/Text: 850-564-8056</a><br/>
-      <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email: a.strickland@affordablehomescrestview.com</a><br/>
+      <a href="tel:+18505648056">📱 Call/Text: 850-564-8056</a>
+      <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email: a.strickland@affordablehomescrestview.com</a>
       <a href="https://facebook.com/aaren.newhomeconsultant" target="_blank">🔗 Facebook</a>
     </div>
   </div>
 
   <div class="homes-section">
     <h2>🏡 Homes On My Lot</h2>
-    <div class="homes-grid">
-      <div class="home-tile">
+    <div class="homes-list">
+      <div class="home-item">
         <a href="Providence.png" target="_blank">
-          <img src="Providence-thumb.png" alt="Providence thumbnail" />
+          <img src="ProvidenceThumb.png" alt="Providence thumbnail">
           Providence (4 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Delight.png" target="_blank">
-          <img src="Delight-thumb.png" alt="Delight thumbnail" />
+          <img src="DelightThumb.png" alt="Delight thumbnail">
           Delight (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="HeyJude.png" target="_blank">
-          <img src="HeyJude-thumb.png" alt="Hey Jude thumbnail" />
+          <img src="HeyJudeThumb.png" alt="Hey Jude thumbnail">
           Hey Jude (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Jackson.png" target="_blank">
-          <img src="Jackson-thumb.png" alt="Jackson thumbnail" />
+          <img src="JacksonThumb.png" alt="Jackson thumbnail">
           Jackson (4 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Jones.png" target="_blank">
-          <img src="Jones-thumb.png" alt="Jones thumbnail" />
+          <img src="JonesThumb.png" alt="Jones thumbnail">
           Jones (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Raven.png" target="_blank">
-          <img src="Raven-thumb.png" alt="Raven thumbnail" />
+          <img src="RavenThumb.png" alt="Raven thumbnail">
           Raven (2 bdm / 1 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Shiloh.png" target="_blank">
-          <img src="Shiloh-thumb.png" alt="Shiloh thumbnail" />
+          <img src="ShilohThumb.png" alt="Shiloh thumbnail">
           Shiloh (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Sweetpea.png" target="_blank">
-          <img src="Sweetpea-thumb.png" alt="Sweetpea thumbnail" />
+          <img src="SweetpeaThumb.png" alt="Sweetpea thumbnail">
           Sweet Pea (2 bdm / 1 bth)
         </a>
       </div>
-      <div class="home-tile">
+      <div class="home-item">
         <a href="Tidewater.png" target="_blank">
-          <img src="Tidewater-thumb.png" alt="Tidewater thumbnail" />
+          <img src="TidewaterThumb.png" alt="Tidewater thumbnail">
           Tidewater (4 bdm / 2 bth)
         </a>
       </div>
     </div>
   </div>
-
 </body>
 </html>
