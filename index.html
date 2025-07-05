@@ -70,39 +70,32 @@
       text-decoration: underline;
     }
 
-    .carousel-container {
-      width: 100%;
+    .flyer-links {
       max-width: 600px;
-      margin: 20px auto 40px;
-      position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: #fff;
+      padding: 20px 30px;
+      margin: 0 20px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
-    .carousel {
-      display: flex;
-      width: 1000%;
-      animation: slide 40s infinite;
+    .flyer-links ul {
+      padding-left: 20px;
     }
 
-    .carousel-image {
-      width: 100%;
-      flex-shrink: 0;
+    .flyer-links li {
+      margin-bottom: 10px;
+      font-size: 16px;
     }
 
-    @keyframes slide {
-      0%   { transform: translateX(0%); }
-      10%  { transform: translateX(-100%); }
-      20%  { transform: translateX(-200%); }
-      30%  { transform: translateX(-300%); }
-      40%  { transform: translateX(-400%); }
-      50%  { transform: translateX(-500%); }
-      60%  { transform: translateX(-600%); }
-      70%  { transform: translateX(-700%); }
-      80%  { transform: translateX(-800%); }
-      90%  { transform: translateX(-900%); }
-      100% { transform: translateX(-1000%); }
+    .flyer-links a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .flyer-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -128,18 +121,19 @@
     </div>
   </div>
 
-  <div class="carousel-container">
-    <div class="carousel">
-      <img src="Tidewater.png" class="carousel-image" alt="Tidewater flyer">
-      <img src="Delight.png" class="carousel-image" alt="Delight flyer">
-      <img src="HeyJude.png" class="carousel-image" alt="Hey flyer">
-      <img src="Jackson.png" class="carousel-image" alt="Jackson flyer">
-      <img src="Jones.png" class="carousel-image" alt="Jones flyer">
-      <img src="Providence.png" class="carousel-image" alt="Providence flyer">
-      <img src="Raven.png" class="carousel-image" alt="Raven flyer">
-      <img src="Shiloh.png" class="carousel-image" alt="Shiloh flyer">
-      <img src="Sweetpea.png" class="carousel-image" alt="Sweet flyer">
-    </div>
+  <div class="flyer-links">
+    <h2>🏡 Homes Available Now</h2>
+    <ul>
+      <li><a href="Providence 4th of July.png" target="_blank">Providence</a></li>
+      <li><a href="Tidewater 4th of July.png" target="_blank">Tidewater</a></li>
+      <li><a href="Delight 4th of July.png" target="_blank">Delight</a></li>
+      <li><a href="Hey Jude 4th of July.png" target="_blank">Hey Jude</a></li>
+      <li><a href="Jackson 4th of July.png" target="_blank">Jackson</a></li>
+      <li><a href="Jones 4th of July.png" target="_blank">Jones</a></li>
+      <li><a href="Raven 4th of July.png" target="_blank">Raven</a></li>
+      <li><a href="Shiloh 4th of July.png" target="_blank">Shiloh</a></li>
+      <li><a href="Sweet Pea 4th of July.png" target="_blank">Sweet Pea</a></li>
+    </ul>
   </div>
 
 </body>
