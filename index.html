@@ -2,147 +2,158 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini-Mods Contact Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minis & Mods - Contact Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      background: #f3f3f3;
       margin: 0;
-      padding: 0;
+      padding: 20px;
     }
-    .container {
+
+    .card {
       max-width: 900px;
-      margin: 40px auto;
-      background-color: white;
+      margin: 0 auto 30px;
+      background: white;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    h1, h2 {
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       text-align: center;
-      color: #333;
     }
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #444;
+
+    .headshot {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
     }
-    .contact {
+
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 24px;
+    }
+
+    h2 {
       text-align: center;
-      margin-top: 20px;
+      margin-bottom: 20px;
     }
+
     .contact a {
-      display: block;
-      margin: 5px 0;
+      display: inline-block;
+      margin: 5px 10px;
+      text-decoration: none;
       color: #007bff;
       font-weight: bold;
-      text-decoration: none;
     }
-    .homes-section {
-      max-width: 1100px;
-      margin: 40px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    .homes-list {
+
+    .homes-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      padding: 0;
     }
-    .home-item {
-      width: 240px;
+
+    .home-card {
+      width: 200px;
       text-align: center;
     }
-    .home-item img {
+
+    .home-card img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
-    .home-item a {
+
+    a {
+      color: #007bff;
       text-decoration: none;
-      color: #0066cc;
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Meet Aaren</h1>
-    <p>Aaren has extensive experience in both residential new construction and modular home sales. Her leadership in disaster relief housing after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
-    <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
-    <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.</p>
+
+  <div class="card">
+    <img src="Business Card.jpg" alt="Aaren Strickland" class="headshot" />
+    <h1>Aaren Strickland</h1>
+    <p>New Home Sales Specialist | Affordable Homes of Crestview</p>
+    <p>
+      A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership. She’s also experienced in disaster response housing efforts after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.
+    </p>
+    <p>
+      When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.
+    </p>
     <div class="contact">
-      <a href="tel:+18505648056">📱 Call/Text: 850-564-8056</a>
-      <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email: a.strickland@affordablehomescrestview.com</a>
+      <a href="tel:+18505648056">📱 Call/Text: 850-564-8056</a><br/>
+      <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email: a.strickland@affordablehomescrestview.com</a><br/>
       <a href="https://facebook.com/aaren.newhomeconsultant" target="_blank">🔗 Facebook</a>
     </div>
   </div>
 
-  <div class="homes-section">
+  <div class="card">
     <h2>🏡 Homes On My Lot</h2>
-    <div class="homes-list">
-      <div class="home-item">
+    <div class="homes-container">
+      <div class="home-card">
         <a href="Providence.png" target="_blank">
-          <img src="ProvidenceThumb.png" alt="Providence thumbnail">
+          <img src="ProvidenceThumb.png" alt="Providence thumbnail" />
           Providence (4 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Delight.png" target="_blank">
-          <img src="DelightThumb.png" alt="Delight thumbnail">
+          <img src="DelightThumb.png" alt="Delight thumbnail" />
           Delight (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="HeyJude.png" target="_blank">
-          <img src="HeyJudeThumb.png" alt="Hey Jude thumbnail">
+          <img src="HeyJudeThumb.png" alt="Hey Jude thumbnail" />
           Hey Jude (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Jackson.png" target="_blank">
-          <img src="JacksonThumb.png" alt="Jackson thumbnail">
+          <img src="JacksonThumb.png" alt="Jackson thumbnail" />
           Jackson (4 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Jones.png" target="_blank">
-          <img src="JonesThumb.png" alt="Jones thumbnail">
+          <img src="JonesThumb.png" alt="Jones thumbnail" />
           Jones (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Raven.png" target="_blank">
-          <img src="RavenThumb.png" alt="Raven thumbnail">
+          <img src="RavenThumb.png" alt="Raven thumbnail" />
           Raven (2 bdm / 1 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Shiloh.png" target="_blank">
-          <img src="ShilohThumb.png" alt="Shiloh thumbnail">
+          <img src="ShilohThumb.png" alt="Shiloh thumbnail" />
           Shiloh (3 bdm / 2 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Sweetpea.png" target="_blank">
-          <img src="SweetpeaThumb.png" alt="Sweetpea thumbnail">
+          <img src="SweetpeaThumb.png" alt="Sweet Pea thumbnail" />
           Sweet Pea (2 bdm / 1 bth)
         </a>
       </div>
-      <div class="home-item">
+      <div class="home-card">
         <a href="Tidewater.png" target="_blank">
-          <img src="TidewaterThumb.png" alt="Tidewater thumbnail">
+          <img src="TidewaterThumb.png" alt="Tidewater thumbnail" />
           Tidewater (4 bdm / 2 bth)
         </a>
       </div>
     </div>
   </div>
+
 </body>
 </html>
