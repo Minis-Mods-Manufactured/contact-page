@@ -1,69 +1,207 @@
-<div style="max-width: 600px; background: white; padding: 20px; margin: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-  <h2 style="text-align: center;">🏡 Homes On My Lot</h2>
-  <ul style="list-style: none; padding-left: 0;">
-    
-    <li>
-      <img src="ProvidenceThumb.png" alt="Providence" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Providence.png" target="_blank">Providence (4 bdrm / 2 bath)</a>
-      </p>
-    </li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aaren Strickland - Home Specialist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    <li>
-      <img src="DelightThumb.png" alt="Delight" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Delight.png" target="_blank">Delight (3 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    .card {
+      max-width: 600px;
+      background: white;
+      padding: 0 30px 20px;
+      margin: 40px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
 
-    <li>
-      <img src="HeyJudeThumb.png" alt="Hey Jude" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="HeyJude.png" target="_blank">Hey Jude (2 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px 12px 0 0;
+      display: block;
+    }
 
-    <li>
-      <img src="JacksonThumb.png" alt="Jackson" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Jackson.png" target="_blank">Jackson (3 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    h1, h2, p {
+      text-align: center;
+    }
 
-    <li>
-      <img src="JonesThumb.png" alt="Jones" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Jones.png" target="_blank">Jones (2 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    h1 {
+      font-size: 24px;
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
 
-    <li>
-      <img src="RavenThumb.png" alt="Raven" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Raven.png" target="_blank">Raven (2 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    h2 {
+      font-size: 18px;
+      color: #777;
+      margin-bottom: 20px;
+    }
 
-    <li>
-      <img src="ShilohThumb.png" alt="Shiloh" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Shiloh.png" target="_blank">Shiloh (3 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
 
-    <li>
-      <img src="SweetpeaThumb.png" alt="Sweet Pea" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Sweetpea.png" target="_blank">Sweet Pea (1 bdrm / 1 bath)</a>
-      </p>
-    </li>
+    .contact {
+      text-align: center;
+      margin-top: 25px;
+    }
 
-    <li>
-      <img src="TidewaterThumb.png" alt="Tidewater" style="width:100%; max-width:300px; display:block; margin:auto; border-radius:8px;"/>
-      <p style="text-align:center; margin:10px 0;">
-        <a href="Tidewater.png" target="_blank">Tidewater (3 bdrm / 2 bath)</a>
-      </p>
-    </li>
+    .contact a {
+      display: inline-block;
+      margin: 8px 10px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  </ul>
-</div>
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .homes-section {
+      max-width: 600px;
+      background: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .homes-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .homes-section li {
+      margin-bottom: 30px;
+    }
+
+    .homes-section img {
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin: auto;
+      border-radius: 8px;
+    }
+
+    .homes-section p {
+      margin: 10px 0 0;
+    }
+
+    .homes-section a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .homes-section a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="Business Card.jpg" alt="Aaren Strickland" />
+    <h1>Aaren Strickland</h1>
+    <h2>Home Specialist – Affordable Homes of Crestview</h2>
+    <p>
+      Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.
+    </p>
+    <p>
+      A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.
+    </p>
+    <p>
+      When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.
+    </p>
+    <div class="contact">
+      <a href="tel:+18505648056">📱 Call/Text: 850-564-8056</a><br/>
+      <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email: a.strickland@affordablehomescrestview.com</a><br/>
+      <a href="https://facebook.com/aaren.newhomeconsultant" target="_blank">🔗 Facebook</a>
+    </div>
+  </div>
+
+  <div class="homes-section">
+    <h2>🏡 Homes On My Lot</h2>
+    <ul>
+
+      <li>
+        <img src="ProvidenceThumb.png" alt="Providence" />
+        <p style="text-align:center;">
+          <a href="Providence.png" target="_blank">Providence (4 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="DelightThumb.png" alt="Delight" />
+        <p style="text-align:center;">
+          <a href="Delight.png" target="_blank">Delight (3 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="HeyJudeThumb.png" alt="Hey Jude" />
+        <p style="text-align:center;">
+          <a href="HeyJude.png" target="_blank">Hey Jude (2 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="JacksonThumb.png" alt="Jackson" />
+        <p style="text-align:center;">
+          <a href="Jackson.png" target="_blank">Jackson (3 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="JonesThumb.png" alt="Jones" />
+        <p style="text-align:center;">
+          <a href="Jones.png" target="_blank">Jones (2 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="RavenThumb.png" alt="Raven" />
+        <p style="text-align:center;">
+          <a href="Raven.png" target="_blank">Raven (2 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="ShilohThumb.png" alt="Shiloh" />
+        <p style="text-align:center;">
+          <a href="Shiloh.png" target="_blank">Shiloh (3 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="SweetpeaThumb.png" alt="Sweet Pea" />
+        <p style="text-align:center;">
+          <a href="Sweetpea.png" target="_blank">Sweet Pea (1 bdrm / 1 bath)</a>
+        </p>
+      </li>
+
+      <li>
+        <img src="TidewaterThumb.png" alt="Tidewater" />
+        <p style="text-align:center;">
+          <a href="Tidewater.png" target="_blank">Tidewater (3 bdrm / 2 bath)</a>
+        </p>
+      </li>
+
+    </ul>
+  </div>
+
+</body>
+</html>
