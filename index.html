@@ -71,42 +71,45 @@
     }
 
     .homes-section {
-      max-width: 600px;
-      background: white;
+      max-width: 1000px;
       padding: 20px;
       margin: 20px;
+      background: white;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .homes-section ul {
-      list-style: none;
-      padding-left: 0;
+    .homes-section h2 {
+      text-align: center;
     }
 
-    .homes-section li {
-      margin-bottom: 30px;
+    .homes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
 
-    .homes-section img {
+    .home-tile {
+      width: 200px;
+      text-align: center;
+    }
+
+    .home-tile img {
       width: 100%;
-      max-width: 300px;
-      display: block;
-      margin: auto;
+      height: auto;
       border-radius: 8px;
+      margin-bottom: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
     }
 
-    .homes-section p {
-      margin: 10px 0 0;
-    }
-
-    .homes-section a {
-      color: #007bff;
+    .home-tile a {
       text-decoration: none;
+      color: #007bff;
       font-weight: bold;
     }
 
-    .homes-section a:hover {
+    .home-tile a:hover {
       text-decoration: underline;
     }
   </style>
@@ -135,72 +138,62 @@
 
   <div class="homes-section">
     <h2>🏡 Homes On My Lot</h2>
-    <ul>
-
-      <li>
-        <img src="ProvidenceThumb.png" alt="Providence" />
-        <p style="text-align:center;">
-          <a href="Providence.png" target="_blank">Providence (4 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="DelightThumb.png" alt="Delight" />
-        <p style="text-align:center;">
-          <a href="Delight.png" target="_blank">Delight (3 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="HeyJudeThumb.png" alt="Hey Jude" />
-        <p style="text-align:center;">
-          <a href="HeyJude.png" target="_blank">Hey Jude (2 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="JacksonThumb.png" alt="Jackson" />
-        <p style="text-align:center;">
-          <a href="Jackson.png" target="_blank">Jackson (3 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="JonesThumb.png" alt="Jones" />
-        <p style="text-align:center;">
-          <a href="Jones.png" target="_blank">Jones (2 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="RavenThumb.png" alt="Raven" />
-        <p style="text-align:center;">
-          <a href="Raven.png" target="_blank">Raven (2 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="ShilohThumb.png" alt="Shiloh" />
-        <p style="text-align:center;">
-          <a href="Shiloh.png" target="_blank">Shiloh (3 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="SweetpeaThumb.png" alt="Sweet Pea" />
-        <p style="text-align:center;">
-          <a href="Sweetpea.png" target="_blank">Sweet Pea (1 bdrm / 1 bath)</a>
-        </p>
-      </li>
-
-      <li>
-        <img src="TidewaterThumb.png" alt="Tidewater" />
-        <p style="text-align:center;">
-          <a href="Tidewater.png" target="_blank">Tidewater (3 bdrm / 2 bath)</a>
-        </p>
-      </li>
-
-    </ul>
+    <div class="homes-grid">
+      <div class="home-tile">
+        <a href="Providence.png" target="_blank">
+          <img src="Providence-thumb.png" alt="Providence thumbnail" />
+          Providence (4 bdm / 2 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Delight.png" target="_blank">
+          <img src="Delight-thumb.png" alt="Delight thumbnail" />
+          Delight (3 bdm / 2 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="HeyJude.png" target="_blank">
+          <img src="HeyJude-thumb.png" alt="Hey Jude thumbnail" />
+          Hey Jude (3 bdm / 2 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Jackson.png" target="_blank">
+          <img src="Jackson-thumb.png" alt="Jackson thumbnail" />
+          Jackson (4 bdm / 2 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Jones.png" target="_blank">
+          <img src="Jones-thumb.png" alt="Jones thumbnail" />
+          Jones (3 bdm / 2 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Raven.png" target="_blank">
+          <img src="Raven-thumb.png" alt="Raven thumbnail" />
+          Raven (2 bdm / 1 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Shiloh.png" target="_blank">
+          <img src="Shiloh-thumb.png" alt="Shiloh thumbnail" />
+          Shiloh (3 bdm / 2 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Sweetpea.png" target="_blank">
+          <img src="Sweetpea-thumb.png" alt="Sweetpea thumbnail" />
+          Sweet Pea (2 bdm / 1 bth)
+        </a>
+      </div>
+      <div class="home-tile">
+        <a href="Tidewater.png" target="_blank">
+          <img src="Tidewater-thumb.png" alt="Tidewater thumbnail" />
+          Tidewater (4 bdm / 2 bth)
+        </a>
+      </div>
+    </div>
   </div>
 
 </body>
