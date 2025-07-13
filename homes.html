@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Available Homes | Aaren Strickland</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .homes {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .homes h2 {
+      margin-bottom: 30px;
+    }
+
+    .homes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .home {
+      width: 200px;
+    }
+
+    .home img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .home a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .home a.secondary {
+      font-weight: normal;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .top-menu {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      background-color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .top-menu a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .top-menu a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="homes.html">🏡 Available Homes</a>
+    <a href="https://www.21stmortgage.com/web/payment-estimator.nsf/q1.html" target="_blank">💲 Payment Estimator</a>
+    <a href="#ready">📝 Are you ready to buy a new home?</a>
+    <a href="#faq">❓ FAQ</a>
+    <a href="#contact">📞 Contact</a>
+  </div>
+
+  <div class="container">
+    <div class="homes">
+      <h2>🏡 Homes On My Lot</h2>
+      <div class="homes-grid">
+        <div class="home">
+          <a href="Providence.png" target="_blank">
+            <img src="ProvidencePriceReduced.png" alt="Providence exterior">
+            Providence (4 bdm / 2 bth)
+          </a>
+          <a class="secondary" href="Providence.png" target="_blank">📄 View Flyer</a>
+          <a class="secondary" href="providence-gallery.html" target="_blank">📸 View Gallery</a>
+        </div>
+
+        <!-- Copy and paste the rest of your homes here just like the Providence format -->
+        <!-- Example below: -->
+        <div class="home">
+          <a href="Delight.png" target="_blank">
+            <img src="DelightThumb.png" alt="Delight thumbnail">
+            Delight (2 bdm / 2 bth)
+          </a>
+        </div>
+        <!-- Repeat for each home -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
