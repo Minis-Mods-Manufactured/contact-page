@@ -12,6 +12,10 @@
       color: #333;
     }
 
+    .card.qr {
+      justify-content: center;
+    }
+
     .top-menu {
       display: flex;
       justify-content: flex-end;
@@ -66,9 +70,10 @@
     }
 
     .qr-code {
-      width: 240px;
+      width: 260px;
       max-width: 100%;
-      margin-bottom: 20px;
+      margin: auto auto 30px auto;
+      display: block;
     }
 
     .profile-img {
@@ -165,7 +170,7 @@
     <div class="contact-grid">
 
       <!-- QR Card -->
-      <div class="card">
+      <div class="card qr">
         <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
         <div class="card-title">Scan to Contact Me</div>
       </div>
