@@ -18,7 +18,7 @@
       gap: 15px;
       background-color: #fff;
       padding: 10px 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .top-menu a {
@@ -32,72 +32,74 @@
     }
 
     .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
-    .contact-flex {
+    .flex-row {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: flex-end;
-      gap: 40px;
       flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .qr-code {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 10px;
+      width: 200px;
+      height: 260px;
+      object-fit: contain;
     }
 
-    .middle-section {
+    .center-box {
+      background-color: #fff;
+      padding: 20px;
+      width: 260px;
+      height: 260px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 280px;
-      gap: 20px;
-      flex: 1;
-      min-width: 260px;
-    }
-
-    .highlight-box {
-      background-color: #fff;
+      justify-content: center;
+      align-items: center;
       border-radius: 10px;
-      padding: 20px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
-    .highlight-box h3 {
-      margin-top: 0;
+    .center-box strong {
+      font-size: 20px;
       margin-bottom: 10px;
-      font-size: 22px;
     }
 
-    .highlight-box a {
+    .center-box p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .center-box a {
+      font-size: 22px;
+      font-weight: bold;
       color: #007bff;
       text-decoration: none;
-      font-size: 24px;
-      font-weight: bold;
     }
 
-    .highlight-box a:hover {
+    .center-box a:hover {
       text-decoration: underline;
     }
 
     .profile-img {
-  width: 280px;
-  height: 280px;
-  object-fit: cover;
-  object-position: center 10%;
-  border-radius: 10px;
-  transform: scale(1.1);
-  transform-origin: center top;
-  margin-top: -14px; /* pull it back up slightly */
-}
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      object-position: center 5%;
+      border-radius: 10px;
+      transform: scale(1.05);
+      transform-origin: center top;
+      margin-top: -10px;
+    }
+
     .info-card {
+      text-align: center;
       margin-top: 40px;
     }
 
@@ -107,8 +109,8 @@
     }
 
     .info-card p {
-      margin: 8px 0;
       font-size: 18px;
+      margin: 6px 0;
     }
 
     .info-card a {
@@ -119,56 +121,10 @@
     .info-card a:hover {
       text-decoration: underline;
     }
-
-    @media (max-width: 900px) {
-      .contact-flex {
-        flex-direction: column;
-        align-items: center;
-      }
-      .middle-section {
-        height: auto;
-        align-items: center;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="top-menu">
     <a href="index.html">👋 Welcome</a>
     <a href="homes.html">🏡 Available Homes</a>
-    <a href="https://www.21stmortgage.com/web/payment-estimator.nsf/q1.html" target="_blank">💲 Payment Estimator</a>
-    <a href="ready.html">📝 Are you ready to buy a new home?</a>
-    <a href="faq.html">❓ FAQ</a>
-    <a href="contact.html">📞 Contact</a>
-  </div>
-
-  <div class="container">
-    <div class="contact-flex">
-      <!-- QR Code -->
-      <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
-
-      <!-- Center Callouts -->
-      <div class="middle-section">
-        <div class="highlight-box">
-          <h3>📱 Scan to Contact Me!</h3>
-          <p>Use your phone camera to start a text message instantly.</p>
-        </div>
-        <div class="highlight-box">
-          <h3>📅 Schedule your VIP Tour Today!</h3>
-          <a href="tel:8505648056">850-564-8056</a>
-        </div>
-      </div>
-
-      <!-- Profile Image -->
-      <img src="images/AarenUpscaled.png" alt="Aaren Strickland" class="profile-img" />
-    </div>
-
-    <!-- Contact Info -->
-    <div class="info-card">
-      <h2>Aaren Strickland</h2>
-      <p>📧 <a href="mailto:a.strickland@affordablehomescrestview.com">a.strickland@affordablehomescrestview.com</a></p>
-      <p>🌐 <a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">facebook.com/aaren.newhomeconsultant</a></p>
-    </div>
-  </div>
-</body>
-</html>
+    <a href="https://www.21stmort
