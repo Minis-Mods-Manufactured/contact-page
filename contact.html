@@ -45,31 +45,33 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .qr-code {
-      width: 200px;
-      margin-bottom: 20px;
-    }
-
     .qr-row {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 30px;
       flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .qr-code {
+      width: 200px;
     }
 
     .highlight-box {
       background-color: #fefefe;
       border: 1px solid #ddd;
       padding: 15px 20px;
-      margin: 15px auto;
       border-radius: 8px;
-      display: inline-block;
       font-size: 18px;
+      display: inline-block;
+      text-align: left;
     }
 
     .highlight-box strong {
       font-size: 20px;
+      display: block;
+      margin-bottom: 5px;
     }
 
     .info-card {
@@ -98,8 +100,55 @@
     .contact-img {
       max-width: 280px;
       width: 100%;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-form form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form label {
       display: block;
-      margin: 30px auto 0;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
@@ -115,16 +164,17 @@
 
   <div class="container">
     <div class="contact-section">
+
       <div class="qr-row">
         <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
         <div class="highlight-box">
-          <p>📲 <strong>Scan to Contact Me!</strong></p>
-          <p>"Hi Aaren! I'm interested in getting started on a home. Can you help?"</p>
+          <strong>📲 Scan to Contact Me!</strong>
+          <p>Use your phone camera to start a text message instantly.</p>
         </div>
       </div>
 
-      <div class="highlight-box">
-        <p>📅 <strong>Schedule your VIP Tour Today!</strong></p>
+      <div class="highlight-box" style="margin: 20px auto;">
+        <strong>📅 Schedule your VIP Tour Today!</strong>
         <p><a href="tel:8505648056" aria-label="Call Aaren at 850-564-8056">850-564-8056</a></p>
       </div>
 
@@ -135,6 +185,25 @@
       </div>
 
       <img src="images/AarenUpscaled.png" alt="Aaren Strickland" class="contact-img" />
+
+      <div class="contact-form">
+        <h2>📨 Send Me a Message</h2>
+        <form onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone">
+
+          <label for="message">Your Message *</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>
