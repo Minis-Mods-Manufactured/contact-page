@@ -40,7 +40,7 @@
     .contact-layout {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: flex-end;
       flex-wrap: wrap;
       gap: 30px;
     }
@@ -54,7 +54,8 @@
     }
 
     .qr-code {
-      width: 200px;
+      height: 280px;
+      width: auto;
     }
 
     .highlight-box {
@@ -66,6 +67,11 @@
       margin-bottom: 20px;
       width: 100%;
       text-align: center;
+    }
+
+    .middle-column {
+      justify-content: space-between;
+      height: 280px; /* match QR and photo height */
     }
 
     .highlight-box strong {
@@ -99,9 +105,10 @@
     }
 
     .contact-img {
-      max-width: 280px;
-      width: 100%;
+      height: 280px;
+      width: auto;
       border-radius: 10px;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -117,14 +124,14 @@
 
   <div class="container">
     <div class="contact-layout">
-      
+
       <!-- Left Column: QR Code -->
       <div class="column">
         <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
       </div>
 
       <!-- Middle Column: Call to Action Boxes -->
-      <div class="column">
+      <div class="column middle-column">
         <div class="highlight-box">
           <strong>📲 Scan to Contact Me!</strong>
           <p>Use your phone camera to start a text message instantly.</p>
