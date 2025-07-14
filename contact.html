@@ -18,7 +18,7 @@
       gap: 15px;
       background-color: #fff;
       padding: 10px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .top-menu a {
@@ -33,74 +33,99 @@
 
     .container {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px;
+      margin: 40px auto;
+      padding: 20px;
       text-align: center;
     }
 
-    .main-row {
+    .contact-flex {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: flex-end;
       gap: 40px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
     }
 
     .qr-code {
-      width: 200px;
-    }
-
-    .info-box {
-      background-color: #fff;
-      padding: 20px 30px;
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 320px;
-      box-sizing: border-box;
     }
 
-    .info-box h2 {
-      font-size: 20px;
+    .middle-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 280px;
+      gap: 20px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .highlight-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-box h3 {
+      margin-top: 0;
       margin-bottom: 10px;
+      font-size: 22px;
     }
 
-    .info-box p {
-      font-size: 16px;
-      margin: 0;
-    }
-
-    .info-box .phone {
-      font-size: 26px;
+    .highlight-box a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 24px;
       font-weight: bold;
-      display: block;
-      margin-top: 10px;
-      color: #007bff;
-      text-decoration: none;
     }
 
-    .photo {
-      max-width: 240px;
-      border-radius: 12px;
+    .highlight-box a:hover {
+      text-decoration: underline;
     }
 
-    .contact-details {
-      margin-top: 30px;
+    .profile-img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    .contact-details h2 {
+    .info-card {
+      margin-top: 40px;
+    }
+
+    .info-card h2 {
       font-size: 26px;
       margin-bottom: 10px;
     }
 
-    .contact-details a {
-      color: #007bff;
-      text-decoration: none;
+    .info-card p {
+      margin: 8px 0;
       font-size: 18px;
     }
 
-    .contact-details a:hover {
+    .info-card a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .info-card a:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .contact-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+      .middle-section {
+        height: auto;
+        align-items: center;
+      }
     }
   </style>
 </head>
@@ -115,24 +140,28 @@
   </div>
 
   <div class="container">
-    <div class="main-row">
+    <div class="contact-flex">
+      <!-- QR Code -->
       <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
 
-      <div>
-        <div class="info-box">
-          <h2>📱 Scan to Contact Me!</h2>
+      <!-- Center Callouts -->
+      <div class="middle-section">
+        <div class="highlight-box">
+          <h3>📱 Scan to Contact Me!</h3>
           <p>Use your phone camera to start a text message instantly.</p>
         </div>
-        <div class="info-box" style="margin-top: 20px;">
-          <h2>📅 Schedule your VIP Tour Today!</h2>
-          <a href="tel:8505648056" class="phone" aria-label="Call Aaren at 850-564-8056">850-564-8056</a>
+        <div class="highlight-box">
+          <h3>📅 Schedule your VIP Tour Today!</h3>
+          <a href="tel:8505648056">850-564-8056</a>
         </div>
       </div>
 
-      <img src="images/AarenUpscaled.png" alt="Aaren Strickland" class="photo" />
+      <!-- Profile Image -->
+      <img src="images/AarenUpscaled.png" alt="Aaren Strickland" class="profile-img" />
     </div>
 
-    <div class="contact-details">
+    <!-- Contact Info -->
+    <div class="info-card">
       <h2>Aaren Strickland</h2>
       <p>📧 <a href="mailto:a.strickland@affordablehomescrestview.com">a.strickland@affordablehomescrestview.com</a></p>
       <p>🌐 <a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">facebook.com/aaren.newhomeconsultant</a></p>
