@@ -50,6 +50,14 @@
       margin-bottom: 20px;
     }
 
+    .qr-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
     .highlight-box {
       background-color: #fefefe;
       border: 1px solid #ddd;
@@ -88,11 +96,11 @@
     }
 
     .contact-img {
-  max-width: 280px;
-  width: 100%;
-  display: block;
-  margin: 30px auto 0;
-}
+      max-width: 280px;
+      width: 100%;
+      display: block;
+      margin: 30px auto 0;
+    }
   </style>
 </head>
 <body>
@@ -107,10 +115,12 @@
 
   <div class="container">
     <div class="contact-section">
-      <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
-      <div class="highlight-box">
-        <p>📲 <strong>Scan to Contact Me!</strong></p>
-        <p>"Hi Aaren! I'm interested in getting started on a home. Can you help?"</p>
+      <div class="qr-row">
+        <img src="images/ScanToContactMe.png" alt="Scan to contact Aaren" class="qr-code" />
+        <div class="highlight-box">
+          <p>📲 <strong>Scan to Contact Me!</strong></p>
+          <p>"Hi Aaren! I'm interested in getting started on a home. Can you help?"</p>
+        </div>
       </div>
 
       <div class="highlight-box">
