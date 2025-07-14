@@ -62,11 +62,14 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
 
     .qr-code {
       width: 180px;
-      margin: 0 auto 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .contact-box strong {
@@ -90,10 +93,15 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 10px;
+      display: inline-block;
     }
 
     .cta-button:hover {
       background-color: #005bb5;
+    }
+
+    .cta-button + .info-card {
+      margin-top: 20px;
     }
 
     .contact-img {
@@ -107,8 +115,9 @@
     }
 
     .info-card {
-      margin-top: 30px;
+      margin-top: 20px;
       font-size: 18px;
+      text-align: center;
     }
 
     .info-card a {
@@ -159,6 +168,11 @@
           <a href="tel:8505648056" aria-label="Call Aaren" style="color: inherit; text-decoration: none;">850-564-8056</a>
         </div>
         <a href="tel:8505648056" class="cta-button">📞 Call or Text Now</a>
+
+        <strong style="margin-top: 25px;">📇 Download My Contact Card</strong>
+        <a href="images/AarenStricklandContact.vcf" download="AarenStricklandContact.vcf" class="cta-button">
+          💾 Save to Contacts
+        </a>
 
         <div class="info-card">
           <p>📧 <a href="mailto:a.strickland@affordablehomescrestview.com">a.strickland@affordablehomescrestview.com</a></p>
