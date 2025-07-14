@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ | Aaren Strickland</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f0eb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .top-menu {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      background-color: #fff;
+      padding: 12px 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .top-menu a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .top-menu a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    .accordion-item {
+      background-color: #fff;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .accordion-title {
+      padding: 18px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .accordion-title::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      font-size: 24px;
+    }
+
+    .accordion-title.active::after {
+      content: "-";
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      background-color: #fafafa;
+      transition: max-height 0.3s ease;
+    }
+
+    .accordion-content p {
+      margin: 15px 0;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .accordion-title {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-menu">
+    <a href="index.html">👋 Welcome</a>
+    <a href="homes.html">🏡 Available Homes</a>
+    <a href="https://www.21stmortgage.com/web/payment-estimator.nsf/q1.html" target="_blank">💲 Payment Estimator</a>
+    <a href="ready.html">📝 Are you ready to buy a new home?</a>
+    <a href="faq.html">❓ FAQ</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
+
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="accordion-item">
+      <div class="accordion-title">What financing options are available?</div>
+      <div class="accordion-content">
+        <p>We work with trusted lenders who offer manufactured home loans, including FHA, VA, and conventional options. Even if your credit isn’t perfect, we may still have a solution!</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Can I tour a home before I apply?</div>
+      <div class="accordion-content">
+        <p>Absolutely! In fact, I encourage it. Schedule a VIP tour to walk through homes, ask questions, and explore all the features in person.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">How long does the buying process take?</div>
+      <div class="accordion-content">
+        <p>Once you're approved and have selected your home, the process can take anywhere from 4–10 weeks depending on home availability, customization, and delivery timelines.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Can I place a home on my own land?</div>
+      <div class="accordion-content">
+        <p>Yes! Many of our buyers place homes on private land. I can help walk you through the process, including permits, site prep, and delivery.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">What if I don’t have land?</div>
+      <div class="accordion-content">
+        <p>No worries — we work with land-home specialists and community partners who may have space or lots available for purchase or lease.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">How much money do I need to get started?</div>
+      <div class="accordion-content">
+        <p>Many lenders allow you to apply with little to no money down. It really depends on your credit and lender program. We’ll guide you through your options!</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Do you offer homes that are move-in ready?</div>
+      <div class="accordion-content">
+        <p>Yes! We often have homes that are ready for immediate move-in. Check out the “Available Homes” tab or reach out to see what’s currently on our lot.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">What upgrades or customizations are available?</div>
+      <div class="accordion-content">
+        <p>Options vary by model but can include upgraded flooring, appliance packages, energy efficiency features, and more. We’ll go over all available features during your visit.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">What documents do I need to apply?</div>
+      <div class="accordion-content">
+        <p>Typically, you'll need your ID, proof of income (like pay stubs or award letters), and sometimes proof of residence. I’ll help make sure you’re fully prepared before applying.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-title">Still have questions?</div>
+      <div class="accordion-content">
+        <p>I’m here to help! You can call or text me at <a href="tel:8505648056">850-564-8056</a> or visit the <a href="contact.html">Contact</a> page to get in touch anytime.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.accordion-title');
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const currentlyActive = document.querySelector('.accordion-title.active');
+        if (currentlyActive && currentlyActive !== item) {
+          currentlyActive.classList.remove('active');
+          currentlyActive.nextElementSibling.style.maxHeight = 0;
+        }
+        item.classList.toggle('active');
+        const content = item.nextElementSibling;
+        if (item.classList.contains('active')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = 0;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
