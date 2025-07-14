@@ -49,6 +49,7 @@
       justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
+      align-items: stretch;
     }
 
     .card {
@@ -62,11 +63,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      height: 100%;
     }
 
     .qr-code {
-      width: 180px;
+      width: 240px;
+      max-width: 100%;
       margin-bottom: 20px;
     }
 
@@ -140,6 +141,10 @@
 
       .profile-img {
         height: auto;
+      }
+
+      .card {
+        width: 100%;
       }
     }
   </style>
