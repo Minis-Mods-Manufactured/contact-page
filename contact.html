@@ -91,9 +91,11 @@
   width: 280px;
   height: 280px;
   object-fit: cover;
-  object-position: center 10%; /* Move image down slightly */
+  object-position: center 10%;
   border-radius: 10px;
-  transform: scale(1.1); /* Zoom in by 10% */
+  transform: scale(1.1);
+  transform-origin: center top;
+  margin-top: -14px; /* pull it back up slightly */
 }
     .info-card {
       margin-top: 40px;
