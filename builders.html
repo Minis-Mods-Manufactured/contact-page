@@ -1,1 +1,107 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Builders | Aaren Strickland</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f0eb;
+      color: #333;
+    }
+    .top-menu {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      background-color: #fff;
+      padding: 12px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .top-menu a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .top-menu a.active {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+    .builder-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .builder-grid a {
+      display: block;
+      width: 180px;
+      transition: transform 0.2s ease;
+    }
+    .builder-grid a:hover {
+      transform: scale(1.05);
+    }
+    .builder-grid img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) {
+      .builder-grid {
+        gap: 20px;
+      }
+      .builder-grid a {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-menu">
+    <a href="index.html">👋 Welcome</a>
+    <a href="homes.html">🏡 Available Homes</a>
+    <a href="builders.html" class="active">🏗 Our Builders</a>
+    <a href="https://www.21stmortgage.com/web/payment-estimator.nsf/q1.html" target="_blank">💲 Payment Estimator</a>
+    <a href="ready.html">📝 Ready to Buy?</a>
+    <a href="faq.html">❓ FAQ</a>
+    <a href="contact.html">📞 Contact</a>
+  </div>
+
+  <div class="container">
+    <h1>Our Trusted Builder Partners</h1>
+    <div class="builder-grid">
+      <!-- Example entries—replace href and src with your actual URLs & logo filenames -->
+      <a href="https://www.cavcohomes.com" target="_blank">
+        <img src="images/builders/cavco-logo.png" alt="Cavco Homes Logo">
+      </a>
+      <a href="https://www.claytonhomes.com" target="_blank">
+        <img src="images/builders/clayton-logo.png" alt="Clayton Homes Logo">
+      </a>
+      <a href="https://www.palmharborhomes.com" target="_blank">
+        <img src="images/builders/palm-harbor-logo.png" alt="Palm Harbor Homes Logo">
+      </a>
+      <a href="https://www.championhomes.com" target="_blank">
+        <img src="images/builders/champion-logo.png" alt="Champion Homes Logo">
+      </a>
+      <a href="https://www.truhomes.com" target="_blank">
+        <img src="images/builders/tru-logo.png" alt="TRU Homes Logo">
+      </a>
+      <!-- Add as many partners as needed -->
+    </div>
+  </div>
+
+</body>
+</html>
