@@ -7,116 +7,58 @@
   <style>
     body {
       margin: 0;
+      padding: 2rem;
       font-family: Arial, sans-serif;
       background-color: #f4f0eb;
       color: #333;
     }
-    .top-menu {
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-      background-color: #fff;
-      padding: 12px 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    .top-menu a {
-      color: #007bff;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    li {
+      margin: 0.75rem 0;
+      font-size: 1.2rem;
+    }
+
+    a {
       text-decoration: none;
-      font-weight: bold;
+      color: #2c3e50;
     }
-    .top-menu a.active {
+
+    a:hover {
       text-decoration: underline;
     }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 30px;
-    }
-    .builder-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    .builder-grid a {
-      display: block;
-      width: 160px;
-      transition: transform 0.2s ease;
-    }
-    .builder-grid a:hover {
-      transform: scale(1.05);
-    }
-    .builder-grid img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-    @media (max-width: 600px) {
-      .builder-grid {
-        gap: 20px;
-      }
-      .builder-grid a {
-        width: 120px;
-      }
+
+    .checkmark {
+      margin-right: 0.5rem;
     }
   </style>
 </head>
 <body>
-
-  <div class="top-menu">
-    <a href="index.html">👋 Welcome</a>
-    <a href="homes.html">🏡 Available Homes</a>
-    <a href="builders.html" class="active">🏗 Our Builder Partners</a>
-    <a href="https://www.21stmortgage.com/web/payment-estimator.nsf/q1.html" target="_blank">💲 Payment Estimator</a>
-    <a href="ready.html">📝 Ready to Buy?</a>
-    <a href="faq.html">❓ FAQ</a>
-    <a href="contact.html">📞 Contact</a>
-  </div>
-
-  <div class="container">
-    <h1>Our Trusted Builder Partners</h1>
-    <div class="builder-grid">
-      <a href="https://www.franklinhomesusa.com/" target="_blank">
-        <img src="images/builders/franklin-homes.png" alt="Franklin Homes Logo">
-      </a>
-      <a href="https://www.championhomes.com/" target="_blank">
-        <img src="images/builders/champion-homes.png" alt="Champion Homes Logo">
-      </a>
-      <a href="https://www.cavcohomes.com/" target="_blank">
-        <img src="images/builders/cavco-home-center.png" alt="Cavco Home Center Logo">
-      </a>
-      <a href="https://www.cavco.com/destiny" target="_blank">
-        <img src="images/builders/destiny-homes.png" alt="Destiny Homes Logo">
-      </a>
-      <a href="https://claytonaddisonhbf.com/" target="_blank">
-        <img src="images/builders/clayton-addison-al.png" alt="Clayton Homes – Addison, AL Logo">
-      </a>
-      <a href="https://southernenergyhomes.com/" target="_blank">
-        <img src="images/builders/clayton-southern-energy.png" alt="Clayton Southern Energy Homes Logo">
-      </a>
-      <a href="https://cmhsavannah.com/" target="_blank">
-        <img src="images/builders/clayton-tennessee-ga.png" alt="Clayton Homes – Tennessee, GA Logo">
-      </a>
-      <a href="https://www.scotbilt.com/" target="_blank">
-        <img src="images/builders/scotbilt-homes.png" alt="ScotBilt Homes Logo">
-      </a>
-      <a href="https://owntru.com/models/" target="_blank">
-        <img src="images/builders/tru-homes.png" alt="TRU Homes Logo">
-      </a>
-      <a href="https://www.charioteagle.com/" target="_blank">
-        <img src="images/builders/chariot-eagle.png" alt="Chariot Eagle Logo">
-      </a>
-      <a href="https://www.timbercreekhousing.com/" target="_blank">
-        <img src="images/builders/timber-creek-housing.png" alt="Timber Creek Housing Logo">
-      </a>
-    </div>
-  </div>
-
+  <h1>🔗 Our Builder Partners</h1>
+  <ul>
+    <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
+    <li>✅ <a href="https://www.championhomes.com/" target="_blank">Champion Homes</a></li>
+    <li>✅ <a href="https://www.cavcohomes.com/" target="_blank">Cavco Home Center</a></li>
+    <li>✅ <a href="https://www.destinyhomebuilders.com/" target="_blank">Destiny Homes</a></li>
+    <li>✅ <a href="https://claytonaddisonhbf.com/" target="_blank">Clayton Homes – Addison, AL</a></li>
+    <li>✅ <a href="https://southernenergyhomes.com/" target="_blank">Clayton – Southern Energy Homes</a></li>
+    <li>✅ <a href="https://cmhsavannah.com/" target="_blank">Clayton – Savannah, GA</a></li>
+    <li>✅ <a href="https://www.claytonhomes.com/find-a-homebuilder/tn/tennessee/" target="_blank">Clayton – Tennessee, GA</a></li>
+    <li>✅ <a href="https://www.scotbilt.com/" target="_blank">ScotBilt Homes</a></li>
+    <li>✅ <a href="https://owntru.com/models/" target="_blank">TRU Homes</a></li>
+    <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
+    <li>✅ <a href="https://timbercreekhousing.com/" target="_blank">Timber Creek Housing</a></li>
+  </ul>
 </body>
 </html>
