@@ -1,5 +1,5 @@
-<!-- Promo Banner -->
-<div style="background-color: #ff0; color: #000; text-align: center; padding: 10px; font-weight: bold;">
+<!-- Promo Banner (conditionally shown below) -->
+<div id="promo-banner" style="background-color: #ff0; color: #000; text-align: center; padding: 10px; font-weight: bold; display: none;">
   🎁 Apply before <strong>July 31</strong> and receive a <strong>FREE 8'x10' deck</strong> with your new home!
 </div>
 
@@ -14,3 +14,12 @@
   <a href="faq.html">❓ FAQ</a>
   <a href="contact.html">📞 Contact</a>
 </div>
+
+<script>
+  // Show banner if current date is before or on July 31
+  const promoDeadline = new Date("2024-07-31T23:59:59");
+  const now = new Date();
+  if (now <= promoDeadline) {
+    document.getElementById("promo-banner").style.display = "block";
+  }
+</script>
