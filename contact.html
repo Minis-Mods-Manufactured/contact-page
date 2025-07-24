@@ -12,29 +12,6 @@
       color: #333;
     }
 
-    .card.qr {
-      justify-content: center;
-    }
-
-    .top-menu {
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-      background-color: #fff;
-      padding: 12px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .top-menu a {
-      color: #007bff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .top-menu a:hover {
-      text-decoration: underline;
-    }
-
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -67,6 +44,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .card.qr {
+      justify-content: center;
     }
 
     .qr-code {
@@ -156,15 +137,15 @@
 </head>
 <body>
 
-  <div class="top-menu">
-    <a href="index.html">👋 Welcome</a>
-  <a href="builders.html">🏗 Builders</a>
-  <a href="homes.html">🏡 Available Homes</a>
-    <a href="https://www.21stmortgage.com/web/payment-estimator.nsf/q1.html" target="_blank">💲 Payment Estimator</a>
-    <a href="ready.html">📝 Are you ready to buy a new home?</a>
-    <a href="faq.html">❓ FAQ</a>
-    <a href="contact.html">📞 Contact</a>
-  </div>
+  <!-- Shared Header (promo banner + nav links) -->
+  <div id="shared-header"></div>
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('shared-header').innerHTML = data;
+      });
+  </script>
 
   <div class="container">
     <h1>Let’s Connect</h1>
