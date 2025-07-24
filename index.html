@@ -86,13 +86,13 @@
 
   <!-- Shared Header (Banner + Nav) -->
   <div id="shared-header"></div>
-  <script>
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('shared-header').innerHTML = data;
-      });
-  </script>
+<script>
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('shared-header').innerHTML = data;
+    });
+</script>
 
   <div class="container">
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
