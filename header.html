@@ -1,19 +1,9 @@
-<!-- Promo Banner (auto hides after July 31) -->
-<script>
-  const today = new Date();
-  const cutoff = new Date("2025-08-01T00:00:00");
+<!-- header.html -->
+<div id="promo-banner" style="background-color: #ffcc00; color: #000; text-align: center; padding: 15px; font-weight: bold; font-size: 18px;">
+  🎉 Apply by July 31 and get a <u>FREE 8'x10' Deck</u> with your new home! Don’t miss out! 🏡
+</div>
 
-  if (today < cutoff) {
-    document.write(`
-      <div style="background-color: #ffcc00; color: #000; text-align: center; padding: 15px; font-weight: bold; font-size: 18px;">
-        🎉 Apply by July 31 and get a <span style="text-decoration: underline;">FREE 8'x10' Deck</span> with your new home! Don’t miss out! 🏡
-      </div>
-    `);
-  }
-</script>
-
-<!-- Top Navigation -->
-<div class="top-menu">
+<div class="top-menu" style="display: flex; justify-content: flex-end; gap: 15px; background-color: #fff; padding: 10px 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); flex-wrap: wrap;">
   <a href="index.html">👋 Welcome</a>
   <a href="builders.html">🏗 Builders</a>
   <a href="homes.html">🏡 Available Homes</a>
@@ -23,3 +13,13 @@
   <a href="faq.html">❓ FAQ</a>
   <a href="contact.html">📞 Contact</a>
 </div>
+
+<script>
+  // Auto-hide banner after July 31
+  const promoBanner = document.getElementById('promo-banner');
+  const now = new Date();
+  const cutoff = new Date('2025-08-01');
+  if (now >= cutoff && promoBanner) {
+    promoBanner.style.display = 'none';
+  }
+</script>
