@@ -1,9 +1,18 @@
-<!-- Promo Banner (conditionally shown below) -->
-<div id="promo-banner" style="background-color: #ff0; color: #000; text-align: center; padding: 10px; font-weight: bold; display: none;">
-  🎁 Apply before <strong>July 31</strong> and receive a <strong>FREE 8'x10' deck</strong> with your new home!
-</div>
+<!-- Promo Banner (auto hides after July 31) -->
+<script>
+  const today = new Date();
+  const cutoff = new Date("2025-08-01T00:00:00");
 
-<!-- Navigation Bar -->
+  if (today < cutoff) {
+    document.write(`
+      <div style="background-color: #ffcc00; color: #000; text-align: center; padding: 15px; font-weight: bold; font-size: 18px;">
+        🎉 Apply by July 31 and get a <span style="text-decoration: underline;">FREE 8'x10' Deck</span> with your new home! Don’t miss out! 🏡
+      </div>
+    `);
+  }
+</script>
+
+<!-- Top Navigation -->
 <div class="top-menu">
   <a href="index.html">👋 Welcome</a>
   <a href="builders.html">🏗 Builders</a>
@@ -14,12 +23,3 @@
   <a href="faq.html">❓ FAQ</a>
   <a href="contact.html">📞 Contact</a>
 </div>
-
-<script>
-  // Show banner if current date is before or on July 31
-  const promoDeadline = new Date("2024-07-31T23:59:59");
-  const now = new Date();
-  if (now <= promoDeadline) {
-    document.getElementById("promo-banner").style.display = "block";
-  }
-</script>
