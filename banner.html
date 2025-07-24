@@ -1,0 +1,20 @@
+<!-- banner.html -->
+<!-- Promo Deck Banner - auto hides after July 31 -->
+<div id="promo-banner" style="background-color: #ffcc00; color: #000; text-align: center; padding: 15px; font-weight: bold; font-size: 18px;">
+  🎁 Apply before <strong>July 31</strong> and receive a <strong>FREE 8'x10'</strong> deck with your new home!
+</div>
+
+<!-- Dealer Notice -->
+<div style="background-color: #ffff33; color: #000; text-align: center; padding: 10px; font-weight: bold;">
+  ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — this is how 21st Mortgage knows to send it to us!
+</div>
+
+<script>
+  // Auto-hide the promo banner after July 31
+  const promo = document.getElementById('promo-banner');
+  const now = new Date();
+  const promoEnd = new Date('2024-08-01T00:00:00');
+  if (now > promoEnd && promo) {
+    promo.style.display = 'none';
+  }
+</script>
