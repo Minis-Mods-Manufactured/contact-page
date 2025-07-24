@@ -1,6 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaren Strickland - Affordable Homes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .banner-image {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 40px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 10px;
+    }
+
+    .contact-info {
+      margin-top: 20px;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .contact-info a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Load shared promo banner -->
+  <div id="promo-banner"></div>
+
+  <!-- Load shared top navigation -->
+  <div id="shared-header"></div>
+
+  <!-- Shared JS loader -->
+  <script>
+    fetch('banner.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('promo-banner').innerHTML = html;
+      });
+
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('shared-header').innerHTML = html;
+      });
+  </script>
+
+  <div class="container">
+    <div class="banner-container" style="text-align: center; margin-bottom: 20px;">
+      <img src="Business Card.jpg" alt="Business Card Banner" class="banner-image" />
+    </div>
+
+    <div class="card">
+      <h1>Aaren Strickland</h1>
+      <h3>New Home Sales Specialist | Affordable Homes of Crestview</h3>
+      <p>
+        Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.
+      </p>
+      <p>
+        A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.
+      </p>
+      <p>
+        When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.
+      </p>
+
+      <div class="contact-info">
+        <p>📱 <strong><a href="tel:8505648056">Call/Text: 850-564-8056</a></strong></p>
+        <p>📧 <strong><a href="mailto:a.strickland@affordablehomescrestview.com">Email: a.strickland@affordablehomescrestview.com</a></strong></p>
+        <p>🔗 <strong><a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">Facebook</a></strong></p>
+      </div>
+
+      <!-- Dealer Notice -->
+      <div style="margin-top: 30px;">
+        <div style="background-color: yellow; color: black; padding: 15px; border-radius: 6px; font-weight: bold; margin-bottom: 15px;">
+          ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — this is how 21st Mortgage knows to send it to us!
+        </div>
+        <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           style="display: inline-block; padding: 12px 20px; background-color: #1f75cb; color: white; border-radius: 6px; text-decoration: none; font-weight: bold;">
+           📝 Apply Now with 21st Mortgage
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aaren Strickland - Affordable Homes</title>
