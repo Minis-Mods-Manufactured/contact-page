@@ -185,15 +185,16 @@
   <input type="number" id="land" placeholder="e.g. 30000" />
 
   <label for="improvements">Enter Land Improvements ($):</label>
-  <input type="number" id="improvements" placeholder="e.g. 15000" />
-  <p style="font-size: 14px; color: #555; margin-top: 5px;">
-    💡 Typical land improvements include: clearing, septic, sewer tap, water well, grading, and utility connections.
-  </p>
+<input type="text" id="improvements" placeholder="e.g. 15,000" />
 
-  <div class="calculator-result" id="result"></div>
-  <p style="font-size: 14px; color: #666; margin-top: 10px;">
-    🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
-  </p>
+<p style="font-size: 14px; color: #555; margin-top: 5px;">
+  💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
+</p>
+
+<div class="calculator-result" id="result"></div>
+<p style="font-size: 14px; color: #666; margin-top: 10px;">
+  🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
+</p>
 </div>
 
 <script>
@@ -208,10 +209,25 @@
     return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   }
 
+  function parseFormattedNumber(value) {
+    return parseFloat(value.replace(/,/g, '')) || 0;
+  }
+
+  function addCommasOnInput(input) {
+    input.addEventListener('input', () => {
+      const cursorPosition = input.selectionStart;
+      const raw = input.value.replace(/,/g, '');
+      const formatted = Number(raw).toLocaleString();
+      input.value = formatted;
+      input.setSelectionRange(cursorPosition, cursorPosition);
+      calculateTax();
+    });
+  }
+
   function calculateTax() {
-    const price = parseFloat(priceInput.value) || 0;
-    const land = parseFloat(landInput.value) || 0;
-    const improvements = parseFloat(improvementsInput.value) || 0;
+    const price = parseFormattedNumber(priceInput.value);
+    const land = parseFormattedNumber(landInput.value);
+    const improvements = parseFormattedNumber(improvementsInput.value);
     const state = stateSelect.value;
     const county = countySelect.value;
 
@@ -221,7 +237,6 @@
     }
 
     let taxAmount = 0;
-
     if (state === 'fl') {
       taxAmount = price * 0.03;
       if (county === 'escambia') {
@@ -247,12 +262,10 @@
     `;
   }
 
-  priceInput.addEventListener('input', calculateTax);
-  landInput.addEventListener('input', calculateTax);
-  improvementsInput.addEventListener('input', calculateTax);
-  stateSelect.addEventListener('change', calculateTax);
-  countySelect.addEventListener('change', calculateTax);
+  [priceInput, landInput, improvementsInput].forEach(addCommasOnInput);
+  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
 </script>
+
 
 
       <!-- Right: Apply Box -->
