@@ -1,30 +1,111 @@
-<!-- Organized Builder Lists -->
-<div class="builder-links">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Builder Partners | Affordable Homes of Crestview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
 
-  <h3 style="margin-bottom: 10px;">Modular Home Builders</h3>
-  <ul>
-    <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
-    <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
-  </ul>
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
 
-  <h3 style="margin: 30px 0 10px;">Manufactured Home Builders</h3>
-  <ul>
-    <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
-    <li>✅ <a href="https://www.championhomes.com/" target="_blank">Champion Homes</a></li>
-    <li>✅ <a href="https://www.cavcohomes.com/" target="_blank">Cavco Home Center</a></li>
-    <li>✅ <a href="https://www.destinyhomebuilders.com/" target="_blank">Destiny Homes</a></li>
-    <li>✅ <a href="https://claytonaddisonhbf.com/" target="_blank">Clayton Homes – Addison, AL</a></li>
-    <li>✅ <a href="https://southernenergyhomes.com/" target="_blank">Clayton – Southern Energy Homes</a></li>
-    <li>✅ <a href="https://cmhsavannah.com/" target="_blank">Clayton – Savannah, TN</a></li>
-    <li>✅ <a href="https://www.scotbilt.com/" target="_blank">ScotBilt Homes</a></li>
-    <li>✅ <a href="https://owntru.com/models/" target="_blank">TRU Homes</a></li>
-    <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
-    <li>✅ <a href="https://timbercreekhousing.com/" target="_blank">Timber Creek Housing</a></li>
-  </ul>
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-  <h3 style="margin: 30px 0 10px;">Tiny Home Builders</h3>
-  <ul>
-    <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
-  </ul>
+    h3 {
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333;
+    }
 
-</div>
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      font-size: 1.05rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #1f75cb;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .builder-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .builder-visual img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .builder-links {
+      width: 100%;
+    }
+
+    .caption {
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+      margin-top: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .builder-section {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .builder-visual {
+        flex: 1;
+        max-width: 48%;
+      }
+
+      .builder-links {
+        flex: 1;
+        max-width: 48%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared header.html loads promo + menu -->
+  <div id="shared-header"></div>
+
+  <div class="container">
+    <h1>🔗 Our Builder Partners</h1>
+
+    <!-- Flex layout: image on left, links on right -->
+    <div class="builder-section">
+      <div class="builder-visual">
+        <img src="images/BuildersCompilation.png" alt="Trusted Modular & Manufactured Home Brands" />
+      </div>
+
+      <div class="bu
