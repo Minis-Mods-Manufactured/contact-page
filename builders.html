@@ -102,10 +102,53 @@
   <div class="container">
     <h1>🔗 Our Builder Partners</h1>
 
-    <!-- Flex layout: image on left, links on right -->
     <div class="builder-section">
       <div class="builder-visual">
         <img src="images/BuildersCompilation.png" alt="Trusted Modular & Manufactured Home Brands" />
       </div>
 
-      <div class="bu
+      <div class="builder-links">
+        <h3>Modular Home Builders</h3>
+        <ul>
+          <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
+          <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
+        </ul>
+
+        <h3>Manufactured Home Builders</h3>
+        <ul>
+          <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
+          <li>✅ <a href="https://www.championhomes.com/" target="_blank">Champion Homes</a></li>
+          <li>✅ <a href="https://www.cavcohomes.com/" target="_blank">Cavco Home Center</a></li>
+          <li>✅ <a href="https://www.destinyhomebuilders.com/" target="_blank">Destiny Homes</a></li>
+          <li>✅ <a href="https://claytonaddisonhbf.com/" target="_blank">Clayton Homes – Addison, AL</a></li>
+          <li>✅ <a href="https://southernenergyhomes.com/" target="_blank">Clayton – Southern Energy Homes</a></li>
+          <li>✅ <a href="https://cmhsavannah.com/" target="_blank">Clayton – Savannah, TN</a></li>
+          <li>✅ <a href="https://www.scotbilt.com/" target="_blank">ScotBilt Homes</a></li>
+          <li>✅ <a href="https://owntru.com/models/" target="_blank">TRU Homes</a></li>
+          <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
+          <li>✅ <a href="https://timbercreekhousing.com/" target="_blank">Timber Creek Housing</a></li>
+        </ul>
+
+        <h3>Tiny Home Builders</h3>
+        <ul>
+          <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="caption">
+      We proudly offer homes from the most trusted brands in modular and manufactured housing.<br/>
+      <strong>One dealer. Endless possibilities.</strong>
+    </p>
+  </div>
+
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('shared-header').innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>
