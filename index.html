@@ -262,13 +262,16 @@
     const total = homeSubtotal + land + improvements;
 
     resultDiv.innerHTML = `
-      🏠 Home Price: ${formatCurrency(price)}<br/>
-      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
-      <strong>Subtotal (Home + Taxes): ${formatCurrency(homeSubtotal)}</strong><br/><br/>
-      🌾 Land: ${formatCurrency(land)}<br/>
-      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
-      <hr style="margin: 10px 0;">
-      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
+      🏠 Home Price: $XXX,XXX.XX  
+💰 Taxes & Surtax: $X,XXX.XX  
+<strong>🏡 House Subtotal: $XXX,XXX.XX</strong>  
+
+🌾 Land: $XX,XXX.XX  
+🛠️ Land Improvements: $XX,XXX.XX  
+<strong>🌳 Land Subtotal: $XX,XXX.XX</strong>  
+
+<hr style="margin: 10px 0;">
+<strong>💵 Estimated Total: $XXX,XXX.XX</strong>
     `;
   }
 
@@ -292,55 +295,83 @@
   </div>
 
   <script>
-    const priceInput = document.getElementById('price');
-    const landInput = document.getElementById('land');
-    const improvementsInput = document.getElementById('improvements');
-    const stateSelect = document.getElementById('state');
-    const countySelect = document.getElementById('county');
-    const resultDiv = document.getElementById('result');
+  const priceInput = document.getElementById('price');
+  const landInput = document.getElementById('land');
+  const improvementsInput = document.getElementById('improvements');
+  const stateSelect = document.getElementById('state');
+  const countySelect = document.getElementById('county');
+  const resultDiv = document.getElementById('result');
 
-    function calculateTax() {
-      const price = parseFloat(priceInput.value) || 0;
-      const land = parseFloat(landInput.value) || 0;
-      const improvements = parseFloat(improvementsInput.value) || 0;
-      const state = stateSelect.value;
-      const county = countySelect.value;
+  function formatCurrency(num) {
+    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
 
-      if (price <= 0) {
-        resultDiv.textContent = '';
-        return;
-      }
+  function parseFormattedNumber(value) {
+    return parseFloat(value.replace(/,/g, '')) || 0;
+  }
 
-      let taxAmount = 0;
+  function formatInputValue(input) {
+    const original = input.value.replace(/,/g, '');
+    if (!/^\d*$/.test(original)) return;
+    const formatted = Number(original).toLocaleString('en-US');
+    input.value = formatted;
+  }
 
-      if (state === 'fl') {
-        taxAmount = price * 0.03;
-        if (county === 'escambia') {
-          taxAmount += 75;
-        } else if (county === 'other') {
-          taxAmount += 50;
-        }
-      } else if (state === 'al') {
-        taxAmount = price * 0.055;
-      }
+  function attachLiveFormat(input) {
+    input.addEventListener('input', () => {
+      const position = input.selectionStart;
+      formatInputValue(input);
+      input.setSelectionRange(input.value.length, input.value.length);
+      calculateTax();
+    });
+  }
 
-      const total = price + taxAmount + land + improvements;
+  function calculateTax() {
+    const price = parseFormattedNumber(priceInput.value);
+    const land = parseFormattedNumber(landInput.value);
+    const improvements = parseFormattedNumber(improvementsInput.value);
+    const state = stateSelect.value;
+    const county = countySelect.value;
 
-      resultDiv.innerHTML = `
-        🏠 Home Price: $${price.toFixed(2)}<br/>
-        💰 Taxes & Surtax: $${taxAmount.toFixed(2)}<br/>
-        🌾 Land: $${land.toFixed(2)}<br/>
-        🛠️ Land Improvements: $${improvements.toFixed(2)}<br/>
-        <strong>💵 Estimated Total: $${total.toFixed(2)}</strong>
-      `;
+    if (price <= 0) {
+      resultDiv.textContent = '';
+      return;
     }
 
-    priceInput.addEventListener('input', calculateTax);
-    landInput.addEventListener('input', calculateTax);
-    improvementsInput.addEventListener('input', calculateTax);
-    stateSelect.addEventListener('change', calculateTax);
-    countySelect.addEventListener('change', calculateTax);
-  </script>
+    let taxAmount = 0;
+    if (state === 'fl') {
+      taxAmount = price * 0.03;
+      if (county === 'escambia') {
+        taxAmount += 75;
+      } else if (county === 'other') {
+        taxAmount += 50;
+      }
+    } else if (state === 'al') {
+      taxAmount = price * 0.055;
+    }
+
+    const houseSubtotal = price + taxAmount;
+    const landSubtotal = land + improvements;
+    const total = houseSubtotal + landSubtotal;
+
+    resultDiv.innerHTML = `
+      🏠 Home Price: ${formatCurrency(price)}<br/>
+      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
+      <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
+
+      🌾 Land: ${formatCurrency(land)}<br/>
+      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
+      <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
+
+      <hr style="margin: 10px 0;">
+      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
+    `;
+  }
+
+  [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
+  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
+</script>
+
 
 </body>
 </html>
