@@ -353,19 +353,6 @@
     const houseSubtotal = price + taxAmount;
     const landSubtotal = land + improvements;
     const total = houseSubtotal + landSubtotal;
-
-    resultDiv.innerHTML = `
-      🏠 Home Price: ${formatCurrency(price)}<br/>
-      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
-      <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
-
-      🌾 Land: ${formatCurrency(land)}<br/>
-      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
-      <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
-
-      <hr style="margin: 10px 0;">
-      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
-    `;
   }
 
   [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
