@@ -11,60 +11,54 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
-    .card {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 30px;
-      margin-bottom: 40px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+
     h1 {
       margin-top: 10px;
     }
+
     .contact-info {
       margin-top: 20px;
     }
+
     .contact-info p {
       margin: 10px 0;
       font-size: 16px;
     }
+
     .contact-info a {
       color: #007bff;
       text-decoration: none;
     }
+
     .contact-info a:hover {
       text-decoration: underline;
     }
-    .bottom-section {
+
+    .side-by-side {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 30px;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: 40px;
     }
-    .calculator, .apply-box {
+
+    .bio, .calculator {
       background-color: #fff;
       border-radius: 10px;
-      padding: 20px;
-      flex: 1;
-      min-width: 300px;
+      padding: 30px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-    .calculator h3 {
-      margin-top: 0;
-    }
+
     .calculator label {
       display: block;
       margin-top: 10px;
       font-weight: bold;
     }
+
     .calculator input,
     .calculator select {
       width: 100%;
@@ -73,11 +67,22 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
+
     .calculator-result {
       margin-top: 20px;
       font-size: 16px;
       line-height: 1.6;
     }
+
+    .apply-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
     .apply-box a {
       display: inline-block;
       padding: 12px 20px;
@@ -88,6 +93,7 @@
       font-weight: bold;
       margin-bottom: 15px;
     }
+
     .dealer-note {
       background-color: #ff0;
       color: #000;
@@ -96,9 +102,21 @@
       border-radius: 6px;
       text-align: center;
     }
-    @media (max-width: 768px) {
-      .bottom-section {
-        flex-direction: column;
+
+    @media (min-width: 768px) {
+      .side-by-side {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .bio, .calculator {
+        flex: 1;
+        max-width: 48%;
+      }
+
+      .apply-box {
+        max-width: 1000px;
+        margin: 40px auto 0;
       }
     }
   </style>
@@ -124,24 +142,26 @@
   </div>
 
   <div class="container">
-    <div class="card">
-      <h1>Aaren Strickland</h1>
-      <h3>New Home Sales Specialist | Affordable Homes of Crestview</h3>
-      <p>Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
-      <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
-      <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.</p>
 
-      <div class="contact-info">
-        <p>📱 <strong><a href="tel:8505648056">Call/Text: 850-564-8056</a></strong></p>
-        <p>📧 <strong><a href="mailto:a.strickland@affordablehomescrestview.com">Email: a.strickland@affordablehomescrestview.com</a></strong></p>
-        <p>🔗 <strong><a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">Facebook</a></strong></p>
+    <!-- Flex Layout for Bio + Calculator -->
+    <div class="side-by-side">
+
+      <!-- Bio Section -->
+      <div class="bio">
+        <h1>Aaren Strickland</h1>
+        <h3>New Home Sales Specialist | Affordable Homes of Crestview</h3>
+        <p>Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
+        <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
+        <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.</p>
+
+        <div class="contact-info">
+          <p>📱 <strong><a href="tel:8505648056">Call/Text: 850-564-8056</a></strong></p>
+          <p>📧 <strong><a href="mailto:a.strickland@affordablehomescrestview.com">Email: a.strickland@affordablehomescrestview.com</a></strong></p>
+          <p>🔗 <strong><a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">Facebook</a></strong></p>
+        </div>
       </div>
-    </div>
 
-    <!-- Split Section -->
-    <div class="bottom-section">
-
-      <!-- Calculator -->
+      <!-- Calculator Section -->
       <div class="calculator">
         <h3>Estimate Sales Tax & Total Project Cost</h3>
 
@@ -176,15 +196,15 @@
           🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
         </p>
       </div>
+    </div>
 
-      <!-- Apply Box -->
-      <div class="apply-box">
-        <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
-          📝 Apply Now with 21st Mortgage
-        </a>
-        <div class="dealer-note">
-          ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — this is how 21st Mortgage knows to send it to us!
-        </div>
+    <!-- Full-width Apply Now Box -->
+    <div class="apply-box">
+      <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
+        📝 Apply Now with 21st Mortgage
+      </a>
+      <div class="dealer-note">
+        ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — this is how 21st Mortgage knows to send it to us!
       </div>
     </div>
   </div>
@@ -263,6 +283,5 @@
     [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
     [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
   </script>
-
 </body>
 </html>
