@@ -161,37 +161,99 @@
 
     <!-- Split Section: Calculator & Apply Now -->
     <div class="bottom-section">
-      <!-- Left: Calculator -->
-      <div class="calculator">
-        <h3>Estimate Sales Tax & Total Project Cost</h3>
+     <!-- Left: Calculator -->
+<div class="calculator">
+  <h3>Estimate Sales Tax & Total Project Cost</h3>
 
-        <label for="price">Enter Home Price ($):</label>
-        <input type="number" id="price" placeholder="e.g. 200000" />
+  <label for="price">Enter Home Price ($):</label>
+  <input type="number" id="price" placeholder="e.g. 200000" />
 
-        <label for="state">Select State:</label>
-        <select id="state">
-          <option value="fl">Florida</option>
-          <option value="al">Alabama</option>
-        </select>
+  <label for="state">Select State:</label>
+  <select id="state">
+    <option value="fl">Florida</option>
+    <option value="al">Alabama</option>
+  </select>
 
-        <label for="county">If FL, Choose County:</label>
-        <select id="county">
-          <option value="default">-- Select --</option>
-          <option value="escambia">Escambia County</option>
-          <option value="other">All Other Counties</option>
-        </select>
+  <label for="county">If FL, Choose County:</label>
+  <select id="county">
+    <option value="default">-- Select --</option>
+    <option value="escambia">Escambia County</option>
+    <option value="other">All Other Counties</option>
+  </select>
 
-        <label for="land">Enter Land Cost ($):</label>
-        <input type="number" id="land" placeholder="e.g. 30000" />
+  <label for="land">Enter Land Cost ($):</label>
+  <input type="number" id="land" placeholder="e.g. 30000" />
 
-        <label for="improvements">Enter Land Improvements ($):</label>
-        <input type="number" id="improvements" placeholder="e.g. 15000" />
+  <label for="improvements">Enter Land Improvements ($):</label>
+  <input type="number" id="improvements" placeholder="e.g. 15000" />
+  <p style="font-size: 14px; color: #555; margin-top: 5px;">
+    💡 Typical land improvements include: clearing, septic, sewer tap, water well, grading, and utility connections.
+  </p>
 
-        <div class="calculator-result" id="result"></div>
-        <p style="font-size: 14px; color: #666; margin-top: 10px;">
-          🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
-        </p>
-      </div>
+  <div class="calculator-result" id="result"></div>
+  <p style="font-size: 14px; color: #666; margin-top: 10px;">
+    🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
+  </p>
+</div>
+
+<script>
+  const priceInput = document.getElementById('price');
+  const landInput = document.getElementById('land');
+  const improvementsInput = document.getElementById('improvements');
+  const stateSelect = document.getElementById('state');
+  const countySelect = document.getElementById('county');
+  const resultDiv = document.getElementById('result');
+
+  function formatCurrency(num) {
+    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  function calculateTax() {
+    const price = parseFloat(priceInput.value) || 0;
+    const land = parseFloat(landInput.value) || 0;
+    const improvements = parseFloat(improvementsInput.value) || 0;
+    const state = stateSelect.value;
+    const county = countySelect.value;
+
+    if (price <= 0) {
+      resultDiv.textContent = '';
+      return;
+    }
+
+    let taxAmount = 0;
+
+    if (state === 'fl') {
+      taxAmount = price * 0.03;
+      if (county === 'escambia') {
+        taxAmount += 75;
+      } else if (county === 'other') {
+        taxAmount += 50;
+      }
+    } else if (state === 'al') {
+      taxAmount = price * 0.055;
+    }
+
+    const homeSubtotal = price + taxAmount;
+    const total = homeSubtotal + land + improvements;
+
+    resultDiv.innerHTML = `
+      🏠 Home Price: ${formatCurrency(price)}<br/>
+      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
+      <strong>Subtotal (Home + Taxes): ${formatCurrency(homeSubtotal)}</strong><br/><br/>
+      🌾 Land: ${formatCurrency(land)}<br/>
+      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
+      <hr style="margin: 10px 0;">
+      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
+    `;
+  }
+
+  priceInput.addEventListener('input', calculateTax);
+  landInput.addEventListener('input', calculateTax);
+  improvementsInput.addEventListener('input', calculateTax);
+  stateSelect.addEventListener('change', calculateTax);
+  countySelect.addEventListener('change', calculateTax);
+</script>
+
 
       <!-- Right: Apply Box -->
       <div class="apply-box">
