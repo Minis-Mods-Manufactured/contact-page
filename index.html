@@ -11,13 +11,11 @@
       margin: 0;
       padding: 0;
     }
-
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
     }
-
     .card {
       background-color: #fff;
       border-radius: 10px;
@@ -26,29 +24,23 @@
       text-align: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-
     h1 {
       margin-top: 10px;
     }
-
     .contact-info {
       margin-top: 20px;
     }
-
     .contact-info p {
       margin: 10px 0;
       font-size: 16px;
     }
-
     .contact-info a {
       color: #007bff;
       text-decoration: none;
     }
-
     .contact-info a:hover {
       text-decoration: underline;
     }
-
     .bottom-section {
       display: flex;
       flex-wrap: wrap;
@@ -57,7 +49,6 @@
       align-items: flex-start;
       margin-top: 40px;
     }
-
     .calculator, .apply-box {
       background-color: #fff;
       border-radius: 10px;
@@ -66,17 +57,14 @@
       min-width: 300px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-
     .calculator h3 {
       margin-top: 0;
     }
-
     .calculator label {
       display: block;
       margin-top: 10px;
       font-weight: bold;
     }
-
     .calculator input,
     .calculator select {
       width: 100%;
@@ -85,13 +73,11 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
-
     .calculator-result {
       margin-top: 20px;
       font-size: 16px;
       line-height: 1.6;
     }
-
     .apply-box a {
       display: inline-block;
       padding: 12px 20px;
@@ -102,7 +88,6 @@
       font-weight: bold;
       margin-bottom: 15px;
     }
-
     .dealer-note {
       background-color: #ff0;
       color: #000;
@@ -111,7 +96,6 @@
       border-radius: 6px;
       text-align: center;
     }
-
     @media (max-width: 768px) {
       .bottom-section {
         flex-direction: column;
@@ -130,27 +114,22 @@
         document.getElementById('shared-header').innerHTML = data;
       });
   </script>
-  
-<!-- Business Card Image (Clickable) -->
-<div style="display: flex; justify-content: center; background-color: #fff; padding: 20px 0;">
-  <a href="contact.html" style="display: block;">
-    <img src="Business Card.jpg" alt="Aaren Strickland Business Card"
-      style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" />
-  </a>
-</div>
+
+  <!-- Business Card -->
+  <div style="display: flex; justify-content: center; background-color: #fff; padding: 20px 0;">
+    <a href="contact.html" style="display: block;">
+      <img src="Business Card.jpg" alt="Aaren Strickland Business Card"
+        style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" />
+    </a>
+  </div>
+
   <div class="container">
     <div class="card">
       <h1>Aaren Strickland</h1>
       <h3>New Home Sales Specialist | Affordable Homes of Crestview</h3>
-      <p>
-        Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.
-      </p>
-      <p>
-        A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.
-      </p>
-      <p>
-        When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.
-      </p>
+      <p>Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
+      <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
+      <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, or hanging out with her Dobermans.</p>
 
       <div class="contact-info">
         <p>📱 <strong><a href="tel:8505648056">Call/Text: 850-564-8056</a></strong></p>
@@ -159,130 +138,46 @@
       </div>
     </div>
 
-    <!-- Split Section: Calculator & Apply Now -->
+    <!-- Split Section -->
     <div class="bottom-section">
-     <!-- Left: Calculator -->
-<div class="calculator">
-  <h3>Estimate Sales Tax & Total Project Cost</h3>
 
-  <label for="price">Enter Home Price ($):</label>
-  <input type="text" id="price" placeholder="e.g. 200000" />
+      <!-- Calculator -->
+      <div class="calculator">
+        <h3>Estimate Sales Tax & Total Project Cost</h3>
 
-  <label for="state">Select State:</label>
-  <select id="state">
-    <option value="fl">Florida</option>
-    <option value="al">Alabama</option>
-  </select>
+        <label for="price">Enter Home Price ($):</label>
+        <input type="text" id="price" placeholder="e.g. 200000" />
 
-  <label for="county">If FL, Choose County:</label>
-  <select id="county">
-    <option value="default">-- Select --</option>
-    <option value="escambia">Escambia County</option>
-    <option value="other">All Other Counties</option>
-  </select>
+        <label for="state">Select State:</label>
+        <select id="state">
+          <option value="fl">Florida</option>
+          <option value="al">Alabama</option>
+        </select>
 
-  <label for="land">Enter Land Cost ($):</label>
-  <input type="text" id="land" placeholder="e.g. 30000" />
+        <label for="county">If FL, Choose County:</label>
+        <select id="county">
+          <option value="default">-- Select --</option>
+          <option value="escambia">Escambia County</option>
+          <option value="other">All Other Counties</option>
+        </select>
 
-  <label for="improvements">Enter Land Improvements ($):</label>
-<input type="text" id="improvements" placeholder="e.g. 15,000" />
+        <label for="land">Enter Land Cost ($):</label>
+        <input type="text" id="land" placeholder="e.g. 30000" />
 
-<p style="font-size: 14px; color: #555; margin-top: 5px;">
-  💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
-</p>
+        <label for="improvements">Enter Land Improvements ($):</label>
+        <input type="text" id="improvements" placeholder="e.g. 15000" />
 
-<div class="calculator-result" id="result"></div>
-<p style="font-size: 14px; color: #666; margin-top: 10px;">
-  🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
-</p>
-</div>
+        <p style="font-size: 14px; color: #555; margin-top: 5px;">
+          💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
+        </p>
 
-<script>
-  const priceInput = document.getElementById('price');
-  const landInput = document.getElementById('land');
-  const improvementsInput = document.getElementById('improvements');
-  const stateSelect = document.getElementById('state');
-  const countySelect = document.getElementById('county');
-  const resultDiv = document.getElementById('result');
+        <div class="calculator-result" id="result"></div>
+        <p style="font-size: 14px; color: #666; margin-top: 10px;">
+          🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
+        </p>
+      </div>
 
-  function formatCurrency(num) {
-    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-  }
-
-  function parseFormattedNumber(value) {
-    return parseFloat(value.replace(/,/g, '')) || 0;
-  }
-
-  function formatNumberString(value) {
-    const number = parseFloat(value.replace(/,/g, ''));
-    if (isNaN(number)) return '';
-    return number.toLocaleString('en-US');
-  }
-
-  function attachInputFormat(input) {
-    input.addEventListener('input', (e) => {
-      const position = input.selectionStart;
-      const raw = input.value.replace(/,/g, '');
-      if (!/^\d*$/.test(raw)) return; // only allow digits
-      const formatted = formatNumberString(raw);
-      input.value = formatted;
-
-      // Adjust cursor to remain at end of input
-      input.setSelectionRange(input.value.length, input.value.length);
-
-      calculateTax();
-    });
-  }
-
-  function calculateTax() {
-    const price = parseFormattedNumber(priceInput.value);
-    const land = parseFormattedNumber(landInput.value);
-    const improvements = parseFormattedNumber(improvementsInput.value);
-    const state = stateSelect.value;
-    const county = countySelect.value;
-
-    if (price <= 0) {
-      resultDiv.textContent = '';
-      return;
-    }
-
-    let taxAmount = 0;
-    if (state === 'fl') {
-      taxAmount = price * 0.03;
-      if (county === 'escambia') {
-        taxAmount += 75;
-      } else if (county === 'other') {
-        taxAmount += 50;
-      }
-    } else if (state === 'al') {
-      taxAmount = price * 0.055;
-    }
-
-    const homeSubtotal = price + taxAmount;
-    const total = homeSubtotal + land + improvements;
-
-    resultDiv.innerHTML = `
-      🏠 Home Price: $XXX,XXX.XX  
-💰 Taxes & Surtax: $X,XXX.XX  
-<strong>🏡 House Subtotal: $XXX,XXX.XX</strong>  
-
-🌾 Land: $XX,XXX.XX  
-🛠️ Land Improvements: $XX,XXX.XX  
-<strong>🌳 Land Subtotal: $XX,XXX.XX</strong>  
-
-<hr style="margin: 10px 0;">
-<strong>💵 Estimated Total: $XXX,XXX.XX</strong>
-    `;
-  }
-
-  [priceInput, landInput, improvementsInput].forEach(attachInputFormat);
-  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
-</script>
-
-
-
-
-      <!-- Right: Apply Box -->
+      <!-- Apply Box -->
       <div class="apply-box">
         <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
           📝 Apply Now with 21st Mortgage
@@ -294,82 +189,80 @@
     </div>
   </div>
 
- <script>
-  const priceInput = document.getElementById('price');
-  const landInput = document.getElementById('land');
-  const improvementsInput = document.getElementById('improvements');
-  const stateSelect = document.getElementById('state');
-  const countySelect = document.getElementById('county');
-  const resultDiv = document.getElementById('result');
+  <!-- Calculator Script -->
+  <script>
+    const priceInput = document.getElementById('price');
+    const landInput = document.getElementById('land');
+    const improvementsInput = document.getElementById('improvements');
+    const stateSelect = document.getElementById('state');
+    const countySelect = document.getElementById('county');
+    const resultDiv = document.getElementById('result');
 
-  function formatCurrency(num) {
-    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-  }
-
-  function parseFormattedNumber(value) {
-    return parseFloat(value.replace(/,/g, '')) || 0;
-  }
-
-  function formatInputValue(input) {
-    const original = input.value.replace(/,/g, '');
-    if (!/^\d*$/.test(original)) return;
-    const formatted = Number(original).toLocaleString('en-US');
-    input.value = formatted;
-  }
-
-  function attachLiveFormat(input) {
-    input.addEventListener('input', () => {
-      formatInputValue(input);
-      input.setSelectionRange(input.value.length, input.value.length);
-      calculateTax();
-    });
-  }
-
-  function calculateTax() {
-    const price = parseFormattedNumber(priceInput.value);
-    const land = parseFormattedNumber(landInput.value);
-    const improvements = parseFormattedNumber(improvementsInput.value);
-    const state = stateSelect.value;
-    const county = countySelect.value;
-
-    if (price <= 0) {
-      resultDiv.textContent = '';
-      return;
+    function formatCurrency(num) {
+      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     }
 
-    let taxAmount = 0;
-    if (state === 'fl') {
-      taxAmount = price * 0.03;
-      if (county === 'escambia') {
-        taxAmount += 75;
-      } else if (county === 'other') {
-        taxAmount += 50;
+    function parseFormattedNumber(value) {
+      return parseFloat(value.replace(/,/g, '')) || 0;
+    }
+
+    function formatInputValue(input) {
+      const raw = input.value.replace(/,/g, '');
+      if (!/^\d*$/.test(raw)) return;
+      input.value = Number(raw).toLocaleString('en-US');
+    }
+
+    function attachLiveFormat(input) {
+      input.addEventListener('input', () => {
+        formatInputValue(input);
+        input.setSelectionRange(input.value.length, input.value.length);
+        calculateTax();
+      });
+    }
+
+    function calculateTax() {
+      const price = parseFormattedNumber(priceInput.value);
+      const land = parseFormattedNumber(landInput.value);
+      const improvements = parseFormattedNumber(improvementsInput.value);
+      const state = stateSelect.value;
+      const county = countySelect.value;
+
+      if (price <= 0) {
+        resultDiv.textContent = '';
+        return;
       }
-    } else if (state === 'al') {
-      taxAmount = price * 0.055;
+
+      let taxAmount = 0;
+      if (state === 'fl') {
+        taxAmount = price * 0.03;
+        if (county === 'escambia') {
+          taxAmount += 75;
+        } else if (county === 'other') {
+          taxAmount += 50;
+        }
+      } else if (state === 'al') {
+        taxAmount = price * 0.055;
+      }
+
+      const houseSubtotal = price + taxAmount;
+      const landSubtotal = land + improvements;
+      const total = houseSubtotal + landSubtotal;
+
+      resultDiv.innerHTML = `
+        🏠 Home Price: ${formatCurrency(price)}<br/>
+        💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
+        <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
+        🌾 Land: ${formatCurrency(land)}<br/>
+        🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
+        <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
+        <hr style="margin: 10px 0;">
+        <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
+      `;
     }
 
-    const houseSubtotal = price + taxAmount;
-    const landSubtotal = land + improvements;
-    const total = houseSubtotal + landSubtotal;
-
-    resultDiv.innerHTML = `
-      🏠 Home Price: ${formatCurrency(price)}<br/>
-      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
-      <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
-      🌾 Land: ${formatCurrency(land)}<br/>
-      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
-      <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
-      <hr style="margin: 10px 0;">
-      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
-    `;
-  }
-
-  [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
-  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
-</script>
-
-
+    [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
+    [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
+  </script>
 
 </body>
 </html>
