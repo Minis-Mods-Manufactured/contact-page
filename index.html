@@ -44,12 +44,13 @@
     }
 
     .bio-header img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top; /* This moves the focus up */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
     .bio-header-text h1 {
       margin: 0;
@@ -141,21 +142,28 @@
     }
 
     @media (min-width: 768px) {
-      .side-by-side {
-        flex-direction: row;
-        align-items: flex-start;
-      }
+  .side-by-side {
+    flex-direction: row;
+    align-items: stretch; /* allows equal height */
+  }
 
-      .bio, .calculator {
-        flex: 1;
-        max-width: 48%;
-      }
+  .bio, .calculator {
+    flex: 1;
+    max-width: 48%;
+  }
 
-      .apply-box {
-        max-width: 1000px;
-        margin: 40px auto 0;
-      }
-    }
+  .calculator {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .apply-box {
+    max-width: 1000px;
+    margin: 40px auto 0;
+  }
+}
   </style>
 </head>
 <body>
