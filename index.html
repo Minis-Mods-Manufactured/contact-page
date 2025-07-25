@@ -213,13 +213,23 @@
     return parseFloat(value.replace(/,/g, '')) || 0;
   }
 
-  function addCommasOnInput(input) {
-    input.addEventListener('input', () => {
-      const cursorPosition = input.selectionStart;
+  function formatNumberString(value) {
+    const number = parseFloat(value.replace(/,/g, ''));
+    if (isNaN(number)) return '';
+    return number.toLocaleString('en-US');
+  }
+
+  function attachInputFormat(input) {
+    input.addEventListener('input', (e) => {
+      const position = input.selectionStart;
       const raw = input.value.replace(/,/g, '');
-      const formatted = Number(raw).toLocaleString();
+      if (!/^\d*$/.test(raw)) return; // only allow digits
+      const formatted = formatNumberString(raw);
       input.value = formatted;
-      input.setSelectionRange(cursorPosition, cursorPosition);
+
+      // Adjust cursor to remain at end of input
+      input.setSelectionRange(input.value.length, input.value.length);
+
       calculateTax();
     });
   }
@@ -262,9 +272,10 @@
     `;
   }
 
-  [priceInput, landInput, improvementsInput].forEach(addCommasOnInput);
+  [priceInput, landInput, improvementsInput].forEach(attachInputFormat);
   [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
 </script>
+
 
 
 
