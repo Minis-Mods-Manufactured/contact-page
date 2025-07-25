@@ -263,78 +263,98 @@
   </div>
 
   <!-- Calculator Script -->
-  <script>
-    const priceInput = document.getElementById('price');
-    const landInput = document.getElementById('land');
-    const improvementsInput = document.getElementById('improvements');
-    const stateSelect = document.getElementById('state');
-    const countySelect = document.getElementById('county');
-    const resultDiv = document.getElementById('result');
+<script>
+  const priceInput = document.getElementById('price');
+  const landInput = document.getElementById('land');
+  const improvementsInput = document.getElementById('improvements');
+  const stateSelect = document.getElementById('state');
+  const countySelect = document.getElementById('county');
+  const resultDiv = document.getElementById('result');
+  const countyLabel = document.querySelector('label[for="county"]');
 
-    function formatCurrency(num) {
-      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  function formatCurrency(num) {
+    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  function parseFormattedNumber(value) {
+    return parseFloat(value.replace(/,/g, '')) || 0;
+  }
+
+  function formatInputValue(input) {
+    const raw = input.value.replace(/,/g, '');
+    if (!/^\d*$/.test(raw)) return;
+    input.value = Number(raw).toLocaleString('en-US');
+  }
+
+  function attachLiveFormat(input) {
+    input.addEventListener('input', () => {
+      formatInputValue(input);
+      input.setSelectionRange(input.value.length, input.value.length);
+      calculateTax();
+    });
+  }
+
+  function updateCountyField() {
+    const selectedState = stateSelect.value;
+    if (selectedState === 'fl') {
+      countySelect.disabled = false;
+      countyLabel.style.display = 'block';
+      countySelect.style.display = 'block';
+    } else {
+      countySelect.disabled = true;
+      countySelect.value = 'default';
+      countyLabel.style.display = 'none';
+      countySelect.style.display = 'none';
+    }
+  }
+
+  function calculateTax() {
+    updateCountyField();
+
+    const price = parseFormattedNumber(priceInput.value);
+    const land = parseFormattedNumber(landInput.value);
+    const improvements = parseFormattedNumber(improvementsInput.value);
+    const state = stateSelect.value;
+    const county = countySelect.value;
+
+    if (price <= 0) {
+      resultDiv.textContent = '';
+      return;
     }
 
-    function parseFormattedNumber(value) {
-      return parseFloat(value.replace(/,/g, '')) || 0;
-    }
-
-    function formatInputValue(input) {
-      const raw = input.value.replace(/,/g, '');
-      if (!/^\d*$/.test(raw)) return;
-      input.value = Number(raw).toLocaleString('en-US');
-    }
-
-    function attachLiveFormat(input) {
-      input.addEventListener('input', () => {
-        formatInputValue(input);
-        input.setSelectionRange(input.value.length, input.value.length);
-        calculateTax();
-      });
-    }
-
-    function calculateTax() {
-      const price = parseFormattedNumber(priceInput.value);
-      const land = parseFormattedNumber(landInput.value);
-      const improvements = parseFormattedNumber(improvementsInput.value);
-      const state = stateSelect.value;
-      const county = countySelect.value;
-
-      if (price <= 0) {
-        resultDiv.textContent = '';
-        return;
+    let taxAmount = 0;
+    if (state === 'fl') {
+      taxAmount = price * 0.03;
+      if (county === 'escambia') {
+        taxAmount += 75;
+      } else if (county === 'other') {
+        taxAmount += 50;
       }
-
-      let taxAmount = 0;
-      if (state === 'fl') {
-        taxAmount = price * 0.03;
-        if (county === 'escambia') {
-          taxAmount += 75;
-        } else if (county === 'other') {
-          taxAmount += 50;
-        }
-      } else if (state === 'al') {
-        taxAmount = price * 0.055;
-      }
-
-      const houseSubtotal = price + taxAmount;
-      const landSubtotal = land + improvements;
-      const total = houseSubtotal + landSubtotal;
-
-      resultDiv.innerHTML = `
-        🏠 Home Price: ${formatCurrency(price)}<br/>
-        💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
-        <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
-        🌾 Land: ${formatCurrency(land)}<br/>
-        🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
-        <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
-        <hr style="margin: 10px 0;">
-        <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
-      `;
+    } else if (state === 'al') {
+      taxAmount = price * 0.055;
     }
 
-    [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
-    [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
-  </script>
+    const houseSubtotal = price + taxAmount;
+    const landSubtotal = land + improvements;
+    const total = houseSubtotal + landSubtotal;
+
+    resultDiv.innerHTML = `
+      🏠 Home Price: ${formatCurrency(price)}<br/>
+      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
+      <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
+      🌾 Land: ${formatCurrency(land)}<br/>
+      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
+      <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
+      <hr style="margin: 10px 0;">
+      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
+    `;
+  }
+
+  [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
+  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
+
+  // Run once on load
+  updateCountyField();
+</script>
 </body>
 </html>
