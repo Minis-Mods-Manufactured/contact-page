@@ -1,13 +1,44 @@
-<!-- header.html --> 
+<!-- header.html -->
+<style>
+  .promo-banner {
+    position: sticky;
+    top: 0;
+    background-color: #ffffcc;
+    padding: 12px;
+    text-align: center;
+    z-index: 1000;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .top-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+  }
+
+  .top-menu a {
+    text-decoration: none;
+    color: #1f75cb;
+    font-weight: bold;
+  }
+
+  .top-menu a:hover {
+    text-decoration: underline;
+  }
+</style>
+
 <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" style="text-decoration: none; color: inherit;">
   <div id="promo-banner" class="promo-banner">
-    <p style="margin: 0; font-weight: bold;">
-      📝 Apply by July 31 and get a FREE 8'x10' deck with your new home! 🏡
-    </p>
+    📝 Apply by July 31 and get a FREE 8'x10' deck with your new home! 🏡
   </div>
 </a>
 
-<div class="top-menu" style="display: flex; justify-content: flex-end; gap: 15px; background-color: #fff; padding: 10px 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); flex-wrap: wrap;">
+<div class="top-menu">
   <a href="index.html">👋 Welcome</a>
   <a href="builders.html">🏗 Builders</a>
   <a href="homes.html">🏡 Available Homes</a>
