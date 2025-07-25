@@ -18,18 +18,6 @@
       padding: 20px;
     }
 
-    .banner-container {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .banner-image {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
     .card {
       background-color: #fff;
       border-radius: 10px;
@@ -61,11 +49,50 @@
       text-decoration: underline;
     }
 
-    .apply-now {
+    .bottom-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-top: 40px;
     }
 
-    .apply-now a {
+    .calculator, .apply-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      flex: 1;
+      min-width: 300px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .calculator h3 {
+      margin-top: 0;
+    }
+
+    .calculator label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .calculator input,
+    .calculator select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .calculator-result {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .apply-box a {
       display: inline-block;
       padding: 12px 20px;
       background-color: #1f75cb;
@@ -73,34 +100,38 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      margin-bottom: 15px;
     }
 
-    .apply-note {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #444;
+    .dealer-note {
+      background-color: #ff0;
+      color: #000;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .bottom-section {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Shared Header (Banner + Nav) -->
+  <!-- Shared Header -->
   <div id="shared-header"></div>
-<script>
-  fetch('header.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('shared-header').innerHTML = data;
-    });
-</script>
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('shared-header').innerHTML = data;
+      });
+  </script>
 
   <div class="container">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-      <div class="banner-container" style="flex: 1;">
-        <img src="Business Card.jpg" alt="Business Card Banner" class="banner-image" />
-      </div>
-    </div>
-
     <div class="card">
       <h1>Aaren Strickland</h1>
       <h3>New Home Sales Specialist | Affordable Homes of Crestview</h3>
@@ -119,15 +150,104 @@
         <p>📧 <strong><a href="mailto:a.strickland@affordablehomescrestview.com">Email: a.strickland@affordablehomescrestview.com</a></strong></p>
         <p>🔗 <strong><a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">Facebook</a></strong></p>
       </div>
+    </div>
 
-      <!-- Apply Now Section -->
-<div class="apply-now">
+    <!-- Split Section: Calculator & Apply Now -->
+    <div class="bottom-section">
+      <!-- Left: Calculator -->
+      <div class="calculator">
+        <h3>Estimate Sales Tax & Total Project Cost</h3>
 
-  <div style="background-color: #fff8b3; color: #000; padding: 12px 15px; border-left: 5px solid #f1c40f; border-radius: 6px; font-weight: bold; margin-bottom: 20px;">
-    ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — that’s how 21st Mortgage knows to send it to us!
+        <label for="price">Enter Home Price ($):</label>
+        <input type="number" id="price" placeholder="e.g. 200000" />
+
+        <label for="state">Select State:</label>
+        <select id="state">
+          <option value="fl">Florida</option>
+          <option value="al">Alabama</option>
+        </select>
+
+        <label for="county">If FL, Choose County:</label>
+        <select id="county">
+          <option value="default">-- Select --</option>
+          <option value="escambia">Escambia County</option>
+          <option value="other">All Other Counties</option>
+        </select>
+
+        <label for="land">Enter Land Cost ($):</label>
+        <input type="number" id="land" placeholder="e.g. 30000" />
+
+        <label for="improvements">Enter Land Improvements ($):</label>
+        <input type="number" id="improvements" placeholder="e.g. 15000" />
+
+        <div class="calculator-result" id="result"></div>
+        <p style="font-size: 14px; color: #666; margin-top: 10px;">
+          🔍 This is just a rough estimate. Final costs will vary based on land, location, and selected upgrades.
+        </p>
+      </div>
+
+      <!-- Right: Apply Box -->
+      <div class="apply-box">
+        <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
+          📝 Apply Now with 21st Mortgage
+        </a>
+        <div class="dealer-note">
+          ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — this is how 21st Mortgage knows to send it to us!
+        </div>
+      </div>
+    </div>
   </div>
 
-  <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
-    📝 Apply Now with 21st Mortgage
-  </a>
-</div>
+  <script>
+    const priceInput = document.getElementById('price');
+    const landInput = document.getElementById('land');
+    const improvementsInput = document.getElementById('improvements');
+    const stateSelect = document.getElementById('state');
+    const countySelect = document.getElementById('county');
+    const resultDiv = document.getElementById('result');
+
+    function calculateTax() {
+      const price = parseFloat(priceInput.value) || 0;
+      const land = parseFloat(landInput.value) || 0;
+      const improvements = parseFloat(improvementsInput.value) || 0;
+      const state = stateSelect.value;
+      const county = countySelect.value;
+
+      if (price <= 0) {
+        resultDiv.textContent = '';
+        return;
+      }
+
+      let taxAmount = 0;
+
+      if (state === 'fl') {
+        taxAmount = price * 0.03;
+        if (county === 'escambia') {
+          taxAmount += 75;
+        } else if (county === 'other') {
+          taxAmount += 50;
+        }
+      } else if (state === 'al') {
+        taxAmount = price * 0.055;
+      }
+
+      const total = price + taxAmount + land + improvements;
+
+      resultDiv.innerHTML = `
+        🏠 Home Price: $${price.toFixed(2)}<br/>
+        💰 Taxes & Surtax: $${taxAmount.toFixed(2)}<br/>
+        🌾 Land: $${land.toFixed(2)}<br/>
+        🛠️ Land Improvements: $${improvements.toFixed(2)}<br/>
+        <strong>💵 Estimated Total: $${total.toFixed(2)}</strong>
+      `;
+    }
+
+    priceInput.addEventListener('input', calculateTax);
+    landInput.addEventListener('input', calculateTax);
+    improvementsInput.addEventListener('input', calculateTax);
+    stateSelect.addEventListener('change', calculateTax);
+    countySelect.addEventListener('change', calculateTax);
+  </script>
+
+</body>
+</html>
