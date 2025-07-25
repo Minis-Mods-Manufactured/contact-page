@@ -272,6 +272,8 @@
   const resultDiv = document.getElementById('result');
   const countyLabel = document.querySelector('label[for="county"]');
 
+  let alabamaAlertShown = false;
+
   function formatCurrency(num) {
     return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   }
@@ -296,6 +298,7 @@
 
   function updateCountyField() {
     const selectedState = stateSelect.value;
+
     if (selectedState === 'fl') {
       countySelect.disabled = false;
       countyLabel.style.display = 'block';
@@ -305,6 +308,11 @@
       countySelect.value = 'default';
       countyLabel.style.display = 'none';
       countySelect.style.display = 'none';
+
+      if (selectedState === 'al' && !alabamaAlertShown) {
+        alert("🔔 Alabama taxes are estimated and may vary. A more accurate amount will be calculated after the site evaluation.");
+        alabamaAlertShown = true;
+      }
     }
   }
 
