@@ -23,30 +23,11 @@
       margin-bottom: 30px;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    li {
-      margin: 0.75rem 0;
-      font-size: 1.2rem;
-    }
-
-    a {
-      text-decoration: none;
-      color: #2c3e50;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .builder-visual {
-      text-align: center;
-      margin: 40px 0 20px;
+    .builder-section {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
     }
 
     .builder-visual img {
@@ -62,6 +43,44 @@
       color: #333;
       margin-bottom: 40px;
     }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #2c3e50;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+      .builder-section {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .builder-visual {
+        flex: 1;
+        max-width: 48%;
+      }
+
+      .builder-links {
+        flex: 1;
+        max-width: 48%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -72,34 +91,34 @@
   <div class="container">
     <h1>🔗 Our Builder Partners</h1>
 
-    <!-- Builder Visual Image -->
-    <div class="builder-visual">
-      <img src="images/BuildersCompilation.png" alt="Trusted Modular & Manufactured Home Brands - All in One Place" />
+    <!-- Flex layout for image and list -->
+    <div class="builder-section">
+      <div class="builder-visual">
+        <img src="images/BuildersCompilation.png" alt="Trusted Modular & Manufactured Home Brands - All in One Place" />
+      </div>
+
+      <div class="builder-links">
+        <ul>
+          <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
+          <li>✅ <a href="https://www.championhomes.com/" target="_blank">Champion Homes</a></li>
+          <li>✅ <a href="https://www.cavcohomes.com/" target="_blank">Cavco Home Center</a></li>
+          <li>✅ <a href="https://www.destinyhomebuilders.com/" target="_blank">Destiny Homes</a></li>
+          <li>✅ <a href="https://claytonaddisonhbf.com/" target="_blank">Clayton Homes – Addison, AL</a></li>
+          <li>✅ <a href="https://southernenergyhomes.com/" target="_blank">Clayton – Southern Energy Homes</a></li>
+          <li>✅ <a href="https://cmhsavannah.com/" target="_blank">Clayton – Savannah, TN</a></li>
+          <li>✅ <a href="https://www.scotbilt.com/" target="_blank">ScotBilt Homes</a></li>
+          <li>✅ <a href="https://owntru.com/models/" target="_blank">TRU Homes</a></li>
+          <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
+          <li>✅ <a href="https://timbercreekhousing.com/" target="_blank">Timber Creek Housing</a></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Caption -->
+    <!-- Caption under the section -->
     <p class="caption">
       We proudly offer homes from the most trusted brands in modular and manufactured housing.<br/>
       <strong>One dealer. Endless possibilities.</strong>
     </p>
-
-    <!-- Clickable Builder List -->
-    <ul>
-      <li>✅ <a href="https://franklinhomesusa.com/" target="_blank">Franklin Homes</a></li>
-      <li>✅ <a href="https://www.championhomes.com/" target="_blank">Champion Homes</a></li>
-      <li>✅ <a href="https://www.cavcohomes.com/" target="_blank">Cavco Home Center</a></li>
-      <li>✅ <a href="https://www.destinyhomebuilders.com/" target="_blank">Destiny Homes</a></li>
-      <li>✅ <a href="https://claytonaddisonhbf.com/" target="_blank">Clayton Homes – Addison, AL</a></li>
-      <li>✅ <a href="https://southernenergyhomes.com/" target="_blank">Clayton – Southern Energy Homes</a></li>
-      <li>✅ <a href="https://cmhsavannah.com/" target="_blank">Clayton – Savannah, TN</a></li>
-      <li>✅ <a href="https://www.scotbilt.com/" target="_blank">ScotBilt Homes</a></li>
-      <li>✅ <a href="https://owntru.com/models/" target="_blank">TRU Homes</a></li>
-      <li>✅ <a href="https://www.charioteagle.com/" target="_blank">Chariot Eagle</a></li>
-      <li>✅ <a href="https://timbercreekhousing.com/" target="_blank">Timber Creek Housing</a></li>
-    </ul>
-
-    <!-- Optional: Interactive image map coming in future update -->
-
   </div>
 
   <script>
