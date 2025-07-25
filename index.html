@@ -294,7 +294,7 @@
     </div>
   </div>
 
-  <script>
+ <script>
   const priceInput = document.getElementById('price');
   const landInput = document.getElementById('land');
   const improvementsInput = document.getElementById('improvements');
@@ -319,7 +319,6 @@
 
   function attachLiveFormat(input) {
     input.addEventListener('input', () => {
-      const position = input.selectionStart;
       formatInputValue(input);
       input.setSelectionRange(input.value.length, input.value.length);
       calculateTax();
@@ -353,11 +352,23 @@
     const houseSubtotal = price + taxAmount;
     const landSubtotal = land + improvements;
     const total = houseSubtotal + landSubtotal;
+
+    resultDiv.innerHTML = `
+      🏠 Home Price: ${formatCurrency(price)}<br/>
+      💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
+      <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
+      🌾 Land: ${formatCurrency(land)}<br/>
+      🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
+      <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
+      <hr style="margin: 10px 0;">
+      <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
+    `;
   }
 
   [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
   [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
 </script>
+
 
 
 </body>
