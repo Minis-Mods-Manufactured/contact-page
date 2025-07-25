@@ -3,12 +3,17 @@
   .promo-banner {
     position: sticky;
     top: 0;
-    background-color: #ffffcc;
+    background-color: #ffeb3b; /* brighter yellow */
     padding: 12px;
     text-align: center;
     z-index: 1000;
     font-weight: bold;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .promo-banner a {
+    color: inherit;
+    text-decoration: none;
   }
 
   .top-menu {
@@ -17,8 +22,9 @@
     gap: 15px;
     background-color: #fff;
     padding: 10px 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     flex-wrap: wrap;
+    z-index: 999;
   }
 
   .top-menu a {
@@ -32,11 +38,11 @@
   }
 </style>
 
-<a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" style="text-decoration: none; color: inherit;">
-  <div id="promo-banner" class="promo-banner">
+<div id="promo-banner" class="promo-banner">
+  <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank">
     📝 Apply by July 31 and get a FREE 8'x10' deck with your new home! 🏡
-  </div>
-</a>
+  </a>
+</div>
 
 <div class="top-menu">
   <a href="index.html">👋 Welcome</a>
