@@ -243,6 +243,16 @@
         <p style="font-size: 14px; color: #555; margin-top: 5px;">
           💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
         </p>
+        
+<div id="down-payment-section" style="margin-top: 20px; background-color: #f0f8ff; border-radius: 10px; padding: 15px;">
+  <h4 style="margin-top: 0;">💰 Typical Down Payments</h4>
+  <p style="margin-bottom: 10px;">Estimated based on your Total Package Price:</p>
+  <ul style="padding-left: 20px; margin: 0; font-size: 14px; color: #333;">
+    <li>5% Down: <strong id="dp-5">—</strong></li>
+    <li>10% Down: <strong id="dp-10">—</strong></li>
+    <li>20% Down: <strong id="dp-20">—</strong></li>
+  </ul>
+</div>
 
         <div class="calculator-result" id="result"></div>
         <p style="font-size: 14px; color: #666; margin-top: 10px;">
@@ -356,7 +366,15 @@
       <hr style="margin: 10px 0;">
       <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
     `;
-  }
+    
+  // Update Down Payment Estimates
+  const down5 = total * 0.05;
+  const down10 = total * 0.10;
+  const down20 = total * 0.20;
+
+  document.getElementById('dp-5').textContent = formatCurrency(down5);
+  document.getElementById('dp-10').textContent = formatCurrency(down10);
+  document.getElementById('dp-20').textContent = formatCurrency(down20);}
 
   [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
   [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
