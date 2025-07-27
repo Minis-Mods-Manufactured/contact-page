@@ -375,15 +375,41 @@
       const total = houseSubtotal + landSubtotal;
 
       resultDiv.innerHTML = `
-        🏠 Home Price: ${formatCurrency(price)}<br/>
-        💰 Taxes & Surtax: ${formatCurrency(taxAmount)}<br/>
-        <strong>🏡 House Subtotal: ${formatCurrency(houseSubtotal)}</strong><br/><br/>
-        🌾 Land: ${formatCurrency(land)}<br/>
-        🛠️ Land Improvements: ${formatCurrency(improvements)}<br/>
-        <strong>🌳 Land Subtotal: ${formatCurrency(landSubtotal)}</strong><br/>
-        <hr style="margin: 10px 0;">
-        <strong>💵 Estimated Total: ${formatCurrency(total)}</strong>
-      `;
+  <table style="width: 100%; font-size: 16px;">
+    <tbody>
+      <tr>
+        <td>🏠 Home Price:</td>
+        <td style="text-align: right;">${formatCurrency(price)}</td>
+      </tr>
+      <tr>
+        <td>💰 Taxes & Surtax:</td>
+        <td style="text-align: right;">${formatCurrency(taxAmount)}</td>
+      </tr>
+      <tr>
+        <td><strong>🏡 House Subtotal:</strong></td>
+        <td style="text-align: right;"><strong>${formatCurrency(houseSubtotal)}</strong></td>
+      </tr>
+      <tr><td colspan="2" style="height: 10px;"></td></tr>
+      <tr>
+        <td>🌾 Land:</td>
+        <td style="text-align: right;">${formatCurrency(land)}</td>
+      </tr>
+      <tr>
+        <td>🛠️ Land Improvements:</td>
+        <td style="text-align: right;">${formatCurrency(improvements)}</td>
+      </tr>
+      <tr>
+        <td><strong>🌳 Land Subtotal:</strong></td>
+        <td style="text-align: right;"><strong>${formatCurrency(landSubtotal)}</strong></td>
+      </tr>
+      <tr><td colspan="2"><hr style="margin: 10px 0;"></td></tr>
+      <tr>
+        <td><strong>💵 Estimated Total:</strong></td>
+        <td style="text-align: right;"><strong>${formatCurrency(total)}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+`;
 
       document.getElementById('dp-0').textContent = formatCurrency(0);
       document.getElementById('dp-3').textContent = formatCurrency(total * 0.035);
