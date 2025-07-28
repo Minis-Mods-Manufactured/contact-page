@@ -1,201 +1,297 @@
-<div class="container">
-<h1 style="text-align: center;">🏡 Home Price & Down Payment Estimator</h1>
-<p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-  Use this calculator to estimate taxes, land improvement costs, and typical loan down payments based on your project total.
-</p> 
-<!-- Calculator Section -->
-      <div class="calculator">
-  <form onsubmit="event.preventDefault(); calculateTax();" class="calculator-form">
-    <label for="price">Enter Home Price ($):</label>
-    <input type="text" id="price" name="price" placeholder="e.g. 200000" required />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Price Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0 15px;
+    }
 
-    <label for="state">Select State:</label>
-    <select id="state" name="state" required>
-      <option value="fl">Florida</option>
-      <option value="al">Alabama</option>
-    </select>
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 0;
+    }
 
-    <label for="county">If FL, Choose County:</label>
-    <select id="county" name="county">
-      <option value="default" selected disabled>-- Select --</option>
-      <option value="escambia">Escambia County</option>
-      <option value="other">Other Florida County</option>
-    </select>
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
 
-    <label for="land">Enter Land Cost ($):</label>
-    <input type="text" id="land" name="land" placeholder="e.g. 30000" />
+    p {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
 
-    <label for="improvements">Enter Land Improvements ($):</label>
-    <input type="text" id="improvements" name="improvements" placeholder="e.g. 15000" />
+    .calculator {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
 
-    <p style="font-size: 14px; color: #555;">
-      💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
-    </p>
-  </form>
+    .calculator label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
 
+    .calculator input,
+    .calculator select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-<div id="result" class="calculator-result"></div>
+    .calculator-result {
+      margin-top: 30px;
+    }
 
-<hr class="section-divider" />
+    .blue-box {
+      background-color: #e8f1fb;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+    }
 
-<div class="calculator-result blue-box">
-  <h3 style="text-align: center;">💰 Typical Down Payments<br><small>Based on the full estimated project total:</small></h3>
-  <table style="width: 100%; font-size: 16px; margin-top: 10px;">
-    <tbody>
-      <tr>
-        <td>VA/USDA (0% Down):</td>
-        <td style="text-align: right;"><span id="dp-0">$0.00</span></td>
-      </tr>
-      <tr>
-        <td>FHA (3.5% Down):</td>
-        <td style="text-align: right;"><span id="dp-3">$0.00</span></td>
-      </tr>
-      <tr>
-        <td>5% Down:</td>
-        <td style="text-align: right;"><span id="dp-5">$0.00</span></td>
-      </tr>
-      <tr>
-        <td>10% Down:</td>
-        <td style="text-align: right;"><span id="dp-10">$0.00</span></td>
-      </tr>
-      <tr>
-        <td>20% Down:</td>
-        <td style="text-align: right;"><span id="dp-20">$0.00</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div> <!-- closes .blue-box -->
-  </div> <!-- closes .calculator -->
-</div> <!-- closes .container -->
+    table {
+      width: 100%;
+      font-size: 16px;
+      border-collapse: collapse;
+    }
 
-<script>
-  const priceInput = document.getElementById('price');
-  const landInput = document.getElementById('land');
-  const improvementsInput = document.getElementById('improvements');
-  const stateSelect = document.getElementById('state');
-  const countySelect = document.getElementById('county');
-  const resultDiv = document.getElementById('result');
-  const countyLabel = document.querySelector('label[for="county"]');
+    table td {
+      padding: 5px 0;
+    }
 
-  let alabamaAlertShown = false;
+    h3 {
+      margin-top: 0;
+      text-align: center;
+    }
 
-  function formatCurrency(num) {
-    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-  }
+    h3 small {
+      font-weight: normal;
+      font-size: 80%;
+      color: #555;
+    }
 
-  function parseFormattedNumber(value) {
-    return parseFloat(value.replace(/,/g, '')) || 0;
-  }
+    .section-divider {
+      margin: 40px 0 20px;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
 
-  function formatInputValue(input) {
-    const raw = input.value.replace(/,/g, '');
-    if (!/^\d*$/.test(raw)) return;
-    input.value = Number(raw).toLocaleString('en-US');
-  }
+<body>
+  <div class="container">
+    <h1>🏡 Home Price & Down Payment Estimator</h1>
+    <p>Use this calculator to estimate taxes, land improvement costs, and typical loan down payments based on your project total.</p>
 
-  function attachLiveFormat(input) {
-    input.addEventListener('input', () => {
-      formatInputValue(input);
-      input.setSelectionRange(input.value.length, input.value.length);
-      calculateTax();
-    });
-  }
+    <div class="calculator">
+      <form onsubmit="event.preventDefault(); calculateTax();" class="calculator-form">
+        <label for="price">Enter Home Price ($):</label>
+        <input type="text" id="price" name="price" placeholder="e.g. 200000" required />
 
-  function updateCountyField() {
-    const selectedState = stateSelect.value;
-    if (selectedState === 'fl') {
-      countySelect.disabled = false;
-      countyLabel.style.display = 'block';
-      countySelect.style.display = 'block';
-    } else {
-      countySelect.disabled = true;
-      countySelect.value = 'default';
-      countyLabel.style.display = 'none';
-      countySelect.style.display = 'none';
+        <label for="state">Select State:</label>
+        <select id="state" name="state" required>
+          <option value="fl">Florida</option>
+          <option value="al">Alabama</option>
+        </select>
 
-      if (selectedState === 'al' && !alabamaAlertShown) {
-        alert("🔔 Alabama taxes are estimated and may vary. A more accurate amount will be calculated after the site evaluation.");
-        alabamaAlertShown = true;
+        <label for="county">If FL, Choose County:</label>
+        <select id="county" name="county">
+          <option value="default" selected disabled>-- Select --</option>
+          <option value="escambia">Escambia County</option>
+          <option value="other">Other Florida County</option>
+        </select>
+
+        <label for="land">Enter Land Cost ($):</label>
+        <input type="text" id="land" name="land" placeholder="e.g. 30000" />
+
+        <label for="improvements">Enter Land Improvements ($):</label>
+        <input type="text" id="improvements" name="improvements" placeholder="e.g. 15000" />
+
+        <p style="font-size: 14px; color: #555;">
+          💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
+        </p>
+      </form>
+
+      <div id="result" class="calculator-result"></div>
+
+      <hr class="section-divider" />
+
+      <div class="calculator-result blue-box">
+        <h3>💰 Typical Down Payments<br><small>Based on the full estimated project total:</small></h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>VA/USDA (0% Down):</td>
+              <td style="text-align: right;"><span id="dp-0">$0.00</span></td>
+            </tr>
+            <tr>
+              <td>FHA (3.5% Down):</td>
+              <td style="text-align: right;"><span id="dp-3">$0.00</span></td>
+            </tr>
+            <tr>
+              <td>5% Down:</td>
+              <td style="text-align: right;"><span id="dp-5">$0.00</span></td>
+            </tr>
+            <tr>
+              <td>10% Down:</td>
+              <td style="text-align: right;"><span id="dp-10">$0.00</span></td>
+            </tr>
+            <tr>
+              <td>20% Down:</td>
+              <td style="text-align: right;"><span id="dp-20">$0.00</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const priceInput = document.getElementById('price');
+    const landInput = document.getElementById('land');
+    const improvementsInput = document.getElementById('improvements');
+    const stateSelect = document.getElementById('state');
+    const countySelect = document.getElementById('county');
+    const resultDiv = document.getElementById('result');
+    const countyLabel = document.querySelector('label[for="county"]');
+
+    let alabamaAlertShown = false;
+
+    function formatCurrency(num) {
+      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    }
+
+    function parseFormattedNumber(value) {
+      return parseFloat(value.replace(/,/g, '')) || 0;
+    }
+
+    function formatInputValue(input) {
+      const raw = input.value.replace(/,/g, '');
+      if (!/^\d*$/.test(raw)) return;
+      input.value = Number(raw).toLocaleString('en-US');
+    }
+
+    function attachLiveFormat(input) {
+      input.addEventListener('input', () => {
+        formatInputValue(input);
+        input.setSelectionRange(input.value.length, input.value.length);
+        calculateTax();
+      });
+    }
+
+    function updateCountyField() {
+      const selectedState = stateSelect.value;
+      if (selectedState === 'fl') {
+        countySelect.disabled = false;
+        countyLabel.style.display = 'block';
+        countySelect.style.display = 'block';
+      } else {
+        countySelect.disabled = true;
+        countySelect.value = 'default';
+        countyLabel.style.display = 'none';
+        countySelect.style.display = 'none';
+
+        if (selectedState === 'al' && !alabamaAlertShown) {
+          alert("🔔 Alabama taxes are estimated and may vary. A more accurate amount will be calculated after the site evaluation.");
+          alabamaAlertShown = true;
+        }
       }
     }
-  }
 
-  function calculateTax() {
+    function calculateTax() {
+      updateCountyField();
+
+      const price = parseFormattedNumber(priceInput.value);
+      const land = parseFormattedNumber(landInput.value);
+      const improvements = parseFormattedNumber(improvementsInput.value);
+      const state = stateSelect.value;
+      const county = countySelect.value;
+
+      if (price <= 0) {
+        resultDiv.textContent = '';
+        return;
+      }
+
+      let taxAmount = 0;
+      if (state === 'fl') {
+        taxAmount = price * 0.03;
+        if (county === 'escambia') {
+          taxAmount += 75;
+        } else if (county === 'other') {
+          taxAmount += 50;
+        }
+      } else if (state === 'al') {
+        taxAmount = price * 0.055;
+      }
+
+      const houseSubtotal = price + taxAmount;
+      const landSubtotal = land + improvements;
+      const total = houseSubtotal + landSubtotal;
+
+      resultDiv.innerHTML = `
+        <table>
+          <tbody>
+            <tr>
+              <td>🏠 Home Price:</td>
+              <td style="text-align: right;">${formatCurrency(price)}</td>
+            </tr>
+            <tr>
+              <td>💰 Taxes & Surtax:</td>
+              <td style="text-align: right;">${formatCurrency(taxAmount)}</td>
+            </tr>
+            <tr>
+              <td><strong>🏡 House Subtotal:</strong></td>
+              <td style="text-align: right;"><strong>${formatCurrency(houseSubtotal)}</strong></td>
+            </tr>
+            <tr><td colspan="2" style="height: 10px;"></td></tr>
+            <tr>
+              <td>🌾 Land:</td>
+              <td style="text-align: right;">${formatCurrency(land)}</td>
+            </tr>
+            <tr>
+              <td>🛠️ Land Improvements:</td>
+              <td style="text-align: right;">${formatCurrency(improvements)}</td>
+            </tr>
+            <tr>
+              <td><strong>🌳 Land Subtotal:</strong></td>
+              <td style="text-align: right;"><strong>${formatCurrency(landSubtotal)}</strong></td>
+            </tr>
+            <tr><td colspan="2"><hr style="margin: 10px 0;"></td></tr>
+            <tr>
+              <td><strong>💵 Estimated Total:</strong></td>
+              <td style="text-align: right;"><strong>${formatCurrency(total)}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('dp-0').textContent = formatCurrency(0);
+      document.getElementById('dp-3').textContent = formatCurrency(total * 0.035);
+      document.getElementById('dp-5').textContent = formatCurrency(total * 0.05);
+      document.getElementById('dp-10').textContent = formatCurrency(total * 0.10);
+      document.getElementById('dp-20').textContent = formatCurrency(total * 0.20);
+    }
+
+    [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
+    [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
+
     updateCountyField();
-
-    const price = parseFormattedNumber(priceInput.value);
-    const land = parseFormattedNumber(landInput.value);
-    const improvements = parseFormattedNumber(improvementsInput.value);
-    const state = stateSelect.value;
-    const county = countySelect.value;
-
-    if (price <= 0) {
-      resultDiv.textContent = '';
-      return;
-    }
-
-    let taxAmount = 0;
-    if (state === 'fl') {
-      taxAmount = price * 0.03;
-      if (county === 'escambia') {
-        taxAmount += 75;
-      } else if (county === 'other') {
-        taxAmount += 50;
-      }
-    } else if (state === 'al') {
-      taxAmount = price * 0.055;
-    }
-
-    const houseSubtotal = price + taxAmount;
-    const landSubtotal = land + improvements;
-    const total = houseSubtotal + landSubtotal;
-
-    resultDiv.innerHTML = `
-      <table style="width: 100%; font-size: 16px;">
-        <tbody>
-          <tr>
-            <td>🏠 Home Price:</td>
-            <td style="text-align: right;">${formatCurrency(price)}</td>
-          </tr>
-          <tr>
-            <td>💰 Taxes & Surtax:</td>
-            <td style="text-align: right;">${formatCurrency(taxAmount)}</td>
-          </tr>
-          <tr>
-            <td><strong>🏡 House Subtotal:</strong></td>
-            <td style="text-align: right;"><strong>${formatCurrency(houseSubtotal)}</strong></td>
-          </tr>
-          <tr><td colspan="2" style="height: 10px;"></td></tr>
-          <tr>
-            <td>🌾 Land:</td>
-            <td style="text-align: right;">${formatCurrency(land)}</td>
-          </tr>
-          <tr>
-            <td>🛠️ Land Improvements:</td>
-            <td style="text-align: right;">${formatCurrency(improvements)}</td>
-          </tr>
-          <tr>
-            <td><strong>🌳 Land Subtotal:</strong></td>
-            <td style="text-align: right;"><strong>${formatCurrency(landSubtotal)}</strong></td>
-          </tr>
-          <tr><td colspan="2"><hr style="margin: 10px 0;"></td></tr>
-          <tr>
-            <td><strong>💵 Estimated Total:</strong></td>
-            <td style="text-align: right;"><strong>${formatCurrency(total)}</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    `;
-
-    document.getElementById('dp-0').textContent = formatCurrency(0);
-    document.getElementById('dp-3').textContent = formatCurrency(total * 0.035);
-    document.getElementById('dp-5').textContent = formatCurrency(total * 0.05);
-    document.getElementById('dp-10').textContent = formatCurrency(total * 0.10);
-    document.getElementById('dp-20').textContent = formatCurrency(total * 0.20);
-  }
-
-  [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
-  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
-
-  updateCountyField();
-</script>
+  </script>
+</body>
+</html>
