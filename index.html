@@ -305,7 +305,65 @@
     </div>
 
     <hr class="section-divider" />
+<!-- Testimonials Section -->
+<div class="container">
+  <h2 style="text-align: center; margin-top: 60px;">⭐ What Customers Are Saying</h2>
+  <div class="testimonial-slider" id="testimonial-slider">
+    <div class="testimonial active">"Aaren truly knows her stuff in the mobile home industry! She helped me find a contractor to build a porch and get the best mortgage insurance for my family."</div>
+    <div class="testimonial">"Very knowledgeable about the homes, friendly and helpful. Helped us with financing options and navigating through the process. Would definitely buy our next home from her!"</div>
+    <div class="testimonial">"Aaren was very helpful."</div>
+    <div class="testimonial">"Super helpful and knowledgeable about homes."</div>
+    <div class="testimonial">"Aaren’s online marketing caught my eye and I’m so glad I reached out! Extremely professional and knowledgeable. She made everything easy."</div>
+    <div class="testimonial">"Working with Aaren was an absolute pleasure from start to finish. She kept us informed every step of the way!"</div>
+    <div class="testimonial">"Very professional and friendly. If you need help and have questions, just ask Aaren."</div>
+    <div class="testimonial">"She gave excellent customer service. 10/10."</div>
+    <div class="testimonial">"Very knowledgeable and dedicated. She always kept us informed with any new information."</div>
+    <div class="testimonial">"So nice and patient with us! Definitely gave us a lot to think about for our project."</div>
+  </div>
+</div>
 
+<style>
+  .testimonial-slider {
+    margin: 30px auto 60px;
+    max-width: 800px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    min-height: 140px;
+    text-align: center;
+  }
+
+  .testimonial {
+    display: none;
+    font-size: 18px;
+    font-style: italic;
+    color: #333;
+    line-height: 1.6;
+    transition: opacity 0.5s ease;
+  }
+
+  .testimonial.active {
+    display: block;
+  }
+</style>
+
+<script>
+  const testimonials = document.querySelectorAll('.testimonial');
+  let index = 0;
+
+  function rotateTestimonials() {
+    testimonials.forEach((t, i) => t.classList.toggle('active', i === index));
+    index = (index + 1) % testimonials.length;
+  }
+
+  setInterval(rotateTestimonials, 5000); // rotates every 5 seconds
+</script>
+    
+    <hr class="section-divider" />
+    
     <!-- Apply Box -->
     <div class="apply-box">
       <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
