@@ -1,9 +1,10 @@
+Going to remove the calculator from my existing code. Which section do I remove?
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aaren Strickland - Contact Page</title>
+  <title>Aaren Strickland - Affordable Homes</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,26 +19,22 @@
       padding: 20px;
     }
 
-    .card-top {
+    .side-by-side {
       display: flex;
-      justify-content: center;
-      background-color: #fff;
-      padding: 20px 0;
+      flex-direction: column;
+      gap: 30px;
     }
 
-    .card-top img {
-      width: 100%;
-      max-width: 900px;
-      border-radius: 8px;
+    .bio, .calculator {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .bio-box {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 40px 30px;
-      margin-top: 30px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    .bio p {
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
 
     .bio-header {
@@ -48,69 +45,61 @@
     }
 
     .bio-header img {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: center top;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     .bio-header-text h1 {
-      font-size: 28px;
       margin: 0;
-      color: #222;
+      font-size: 24px;
     }
 
     .bio-header-text h3 {
-      font-size: 18px;
-      margin: 6px 0 0;
-      font-weight: normal;
-      color: #666;
+      margin: 5px 0 0;
+      font-size: 16px;
+      line-height: 1.3;
     }
 
-    .bio-box p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 12px 0;
+    .section-divider {
+      margin: 30px auto;
+      border: none;
+      border-top: 2px solid #ccc;
+      width: 90%;
     }
 
     .contact-icons {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin: 25px 0 10px;
       flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .contact-icons a {
-      color: #1f75cb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       font-weight: bold;
-      font-size: 16px;
+      color: #1f75cb;
       text-decoration: none;
+      font-size: 16px;
     }
 
     .contact-icons a:hover {
       text-decoration: underline;
     }
 
-    .values-badge {
-      text-align: center;
-      margin: 30px 0 20px;
-    }
-
-    .values-badge img {
-      max-width: 220px;
-      height: auto;
-    }
-
     .apply-box {
       background-color: #fff;
       border-radius: 10px;
-      padding: 25px;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      margin: 30px auto;
-      max-width: 1000px;
     }
 
     .apply-box a {
@@ -121,62 +110,344 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      margin-bottom: 15px;
     }
 
     .dealer-note {
-      margin-top: 15px;
-      padding: 12px;
-      background-color: #fff8b3;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
+  background-color: #ff0;
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+    .blue-box {
+  background-color: #e8f1fb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+  .side-by-side {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .bio, .calculator {
+    flex: 1;
+    max-width: 48%;
+  }
+
+  .calculator {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .calculator form {
+    margin-top: 2px;
+  }
+  
+
+  .apply-box {
+    max-width: 1000px;
+    margin: 40px auto 0;
+  }
+}
+    
+.calculator-result {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+    .calculator-result:last-of-type {
+      margin-bottom: 30px;
     }
+
+    .calculator input,
+    .calculator select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .calculator label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Shared Header -->
+  <div id="shared-header"></div>
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('shared-header').innerHTML = data;
+      });
+  </script>
+
   <!-- Business Card -->
-  <div class="card-top">
-    <img src="Business Card.jpg" alt="Aaren Strickland Business Card" />
+  <div style="display: flex; justify-content: center; background-color: #fff; padding: 20px 0;">
+    <a href="contact.html" style="display: block;">
+      <img src="Business Card.jpg" alt="Aaren Strickland Business Card"
+        style="width: 100%; max-width: 900px; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" />
+    </a>
   </div>
 
   <div class="container">
-    <div class="bio-box">
-      <div class="bio-header">
-        <img src="images/AarenUpscaled.png" alt="Aaren Strickland headshot" />
-        <div class="bio-header-text">
-          <h1>Aaren Strickland</h1>
-          <h3>New Home Sales Specialist<br>Affordable Homes of Crestview</h3>
+    <div class="side-by-side">
+      <!-- Bio Section -->
+      <div class="bio">
+        <div class="bio-header">
+          <img src="images/AarenUpscaled.png" alt="Aaren Strickland headshot" />
+          <div class="bio-header-text">
+            <h1>Aaren Strickland</h1>
+            <h3>New Home Sales Specialist<br/>Affordable Homes of Crestview</h3>
+          </div>
+        </div>
+
+        <p>Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She's helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
+        <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
+        <p>She’s built a reputation for being patient, knowledgeable, and fiercely loyal to her customers. Her work includes collaboration with veterans, retirees, and families seeking safe, affordable, and long-lasting housing solutions in Florida and Alabama.</p>
+        <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, attending school, or hanging out with her Dobermans.</p>
+
+        <hr class="section-divider" />
+
+        <div class="contact-icons">
+          <a href="tel:8505648056">📱 Call/Text: 850-564-8056</a>
+          <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email Me</a>
+          <a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">🔗 Facebook</a>
+        </div>
+
+        <hr class="section-divider" />
+
+        <div style="text-align: center; margin-bottom: 40px;">
+          <img src="images/ValuesEmblem.png" alt="Aaren's Core Values" style="max-width: 250px; height: auto;" />
         </div>
       </div>
 
-      <p>Aaren brings extensive experience in manufactured and modular home sales, residential construction, and disaster recovery housing. She’s helped families rebuild after Hurricane Michael and major South Carolina storms—managing modular home installs from permits through final setup.</p>
+      <!-- Calculator Section -->
+      <div class="calculator">
+  <form onsubmit="event.preventDefault(); calculateTax();" class="calculator-form">
+    <label for="price">Enter Home Price ($):</label>
+    <input type="text" id="price" name="price" placeholder="e.g. 200000" required />
 
-      <p>A licensed Florida real estate agent and former Air Force Captain, Aaren is committed to helping first-time and credit-challenged buyers navigate the path to homeownership.</p>
+    <label for="state">Select State:</label>
+    <select id="state" name="state" required>
+      <option value="fl">Florida</option>
+      <option value="al">Alabama</option>
+    </select>
 
-      <p>She’s built a reputation for being patient, knowledgeable, and fiercely loyal to her customers. Her work includes collaboration with veterans, retirees, and families seeking safe, affordable, and long-lasting housing solutions in Florida and Alabama.</p>
+    <label for="county">If FL, Choose County:</label>
+    <select id="county" name="county">
+      <option value="default" selected disabled>-- Select --</option>
+      <option value="escambia">Escambia County</option>
+      <option value="other">Other Florida County</option>
+    </select>
 
-      <p>When she’s not matching families with the perfect home, you’ll find her crafting, cooking, attending school, or hanging out with her Dobermans.</p>
+    <label for="land">Enter Land Cost ($):</label>
+    <input type="text" id="land" name="land" placeholder="e.g. 30000" />
 
-      <div class="contact-icons">
-        <a href="tel:8505648056">📱 Call/Text: 850-564-8056</a>
-        <a href="mailto:a.strickland@affordablehomescrestview.com">📧 Email Me</a>
-        <a href="https://www.facebook.com/aaren.newhomeconsultant" target="_blank">🔗 Facebook</a>
-      </div>
+    <label for="improvements">Enter Land Improvements ($):</label>
+    <input type="text" id="improvements" name="improvements" placeholder="e.g. 15000" />
 
-      <div class="values-badge">
-        <img src="images/ValuesEmblem.png" alt="Core Values Badge" />
+    <p style="font-size: 14px; color: #555;">
+      💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
+    </p>
+  </form>
+
+
+<div id="result" class="calculator-result"></div>
+
+<hr class="section-divider" />
+
+<div class="calculator-result blue-box">
+  <h3 style="text-align: center;">💰 Typical Down Payments<br><small>Based on the full estimated project total:</small></h3>
+  <table style="width: 100%; font-size: 16px; margin-top: 10px;">
+    <tbody>
+      <tr>
+        <td>VA/USDA (0% Down):</td>
+        <td style="text-align: right;"><span id="dp-0">$0.00</span></td>
+      </tr>
+      <tr>
+        <td>FHA (3.5% Down):</td>
+        <td style="text-align: right;"><span id="dp-3">$0.00</span></td>
+      </tr>
+      <tr>
+        <td>5% Down:</td>
+        <td style="text-align: right;"><span id="dp-5">$0.00</span></td>
+      </tr>
+      <tr>
+        <td>10% Down:</td>
+        <td style="text-align: right;"><span id="dp-10">$0.00</span></td>
+      </tr>
+      <tr>
+        <td>20% Down:</td>
+        <td style="text-align: right;"><span id="dp-20">$0.00</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+        <!-- To keep this message manageable, let me know if you want the JS and calculator content pasted here too -->
       </div>
     </div>
 
+    <hr class="section-divider" />
+
+    <!-- Apply Box -->
     <div class="apply-box">
       <a href="https://idp.21stmortgage.com/Account/Register?returnurl=https%3A%2F%2Fapply.21stmortgage.com%2F%3F" target="_blank" rel="noopener noreferrer">
         📝 Apply Now with 21st Mortgage
       </a>
       <div class="dealer-note">
-        ⚠️ Be sure to enter <u>Dealer #1595.1</u> in your application — this is how 21st Mortgage knows to send it to us!
+        ⚠️ Be sure to enter <u>Dealer #1595.1</u> on your application — this is how 21st Mortgage knows to send it to us!
       </div>
     </div>
   </div>
+<script>
+  const priceInput = document.getElementById('price');
+  const landInput = document.getElementById('land');
+  const improvementsInput = document.getElementById('improvements');
+  const stateSelect = document.getElementById('state');
+  const countySelect = document.getElementById('county');
+  const resultDiv = document.getElementById('result');
+  const countyLabel = document.querySelector('label[for="county"]');
+
+  let alabamaAlertShown = false;
+
+  function formatCurrency(num) {
+    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  function parseFormattedNumber(value) {
+    return parseFloat(value.replace(/,/g, '')) || 0;
+  }
+
+  function formatInputValue(input) {
+    const raw = input.value.replace(/,/g, '');
+    if (!/^\d*$/.test(raw)) return;
+    input.value = Number(raw).toLocaleString('en-US');
+  }
+
+  function attachLiveFormat(input) {
+    input.addEventListener('input', () => {
+      formatInputValue(input);
+      input.setSelectionRange(input.value.length, input.value.length);
+      calculateTax();
+    });
+  }
+
+  function updateCountyField() {
+    const selectedState = stateSelect.value;
+    if (selectedState === 'fl') {
+      countySelect.disabled = false;
+      countyLabel.style.display = 'block';
+      countySelect.style.display = 'block';
+    } else {
+      countySelect.disabled = true;
+      countySelect.value = 'default';
+      countyLabel.style.display = 'none';
+      countySelect.style.display = 'none';
+
+      if (selectedState === 'al' && !alabamaAlertShown) {
+        alert("🔔 Alabama taxes are estimated and may vary. A more accurate amount will be calculated after the site evaluation.");
+        alabamaAlertShown = true;
+      }
+    }
+  }
+
+  function calculateTax() {
+    updateCountyField();
+
+    const price = parseFormattedNumber(priceInput.value);
+    const land = parseFormattedNumber(landInput.value);
+    const improvements = parseFormattedNumber(improvementsInput.value);
+    const state = stateSelect.value;
+    const county = countySelect.value;
+
+    if (price <= 0) {
+      resultDiv.textContent = '';
+      return;
+    }
+
+    let taxAmount = 0;
+    if (state === 'fl') {
+      taxAmount = price * 0.03;
+      if (county === 'escambia') {
+        taxAmount += 75;
+      } else if (county === 'other') {
+        taxAmount += 50;
+      }
+    } else if (state === 'al') {
+      taxAmount = price * 0.055;
+    }
+
+    const houseSubtotal = price + taxAmount;
+    const landSubtotal = land + improvements;
+    const total = houseSubtotal + landSubtotal;
+
+    resultDiv.innerHTML = `
+      <table style="width: 100%; font-size: 16px;">
+        <tbody>
+          <tr>
+            <td>🏠 Home Price:</td>
+            <td style="text-align: right;">${formatCurrency(price)}</td>
+          </tr>
+          <tr>
+            <td>💰 Taxes & Surtax:</td>
+            <td style="text-align: right;">${formatCurrency(taxAmount)}</td>
+          </tr>
+          <tr>
+            <td><strong>🏡 House Subtotal:</strong></td>
+            <td style="text-align: right;"><strong>${formatCurrency(houseSubtotal)}</strong></td>
+          </tr>
+          <tr><td colspan="2" style="height: 10px;"></td></tr>
+          <tr>
+            <td>🌾 Land:</td>
+            <td style="text-align: right;">${formatCurrency(land)}</td>
+          </tr>
+          <tr>
+            <td>🛠️ Land Improvements:</td>
+            <td style="text-align: right;">${formatCurrency(improvements)}</td>
+          </tr>
+          <tr>
+            <td><strong>🌳 Land Subtotal:</strong></td>
+            <td style="text-align: right;"><strong>${formatCurrency(landSubtotal)}</strong></td>
+          </tr>
+          <tr><td colspan="2"><hr style="margin: 10px 0;"></td></tr>
+          <tr>
+            <td><strong>💵 Estimated Total:</strong></td>
+            <td style="text-align: right;"><strong>${formatCurrency(total)}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    `;
+
+    document.getElementById('dp-0').textContent = formatCurrency(0);
+    document.getElementById('dp-3').textContent = formatCurrency(total * 0.035);
+    document.getElementById('dp-5').textContent = formatCurrency(total * 0.05);
+    document.getElementById('dp-10').textContent = formatCurrency(total * 0.10);
+    document.getElementById('dp-20').textContent = formatCurrency(total * 0.20);
+  }
+
+  [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
+  [stateSelect, countySelect].forEach(el => el.addEventListener('change', calculateTax));
+
+  updateCountyField();
+</script>
+
 </body>
 </html>
