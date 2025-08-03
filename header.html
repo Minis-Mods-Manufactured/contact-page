@@ -57,11 +57,13 @@
 </div>
 
 <script>
-  // Auto-hide banner after July 31
-  const promoBanner = document.getElementById('promo-banner');
-  const now = new Date();
-  const cutoff = new Date('2025-08-01');
-  if (now >= cutoff && promoBanner) {
-    promoBanner.style.display = 'none';
-  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const promoBanner = document.getElementById('promo-banner');
+    const now = new Date();
+    const cutoff = new Date('2025-08-01');
+    if (now >= cutoff && promoBanner) {
+      promoBanner.style.display = 'none';
+    }
+  });
 </script>
+
