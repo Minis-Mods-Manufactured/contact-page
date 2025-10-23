@@ -1,228 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home Price Calculator | Affordable Homes of Crestview</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
+<!-- Start Calculator & Apply Now Section -->
+<div class="calculator-apply-section" style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 40px;">
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 30px 20px;
-    }
+  <!-- CALCULATOR PANEL -->
+  <div style="flex: 1; min-width: 300px;">
+    <h2>Home Price Estimator</h2>
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    p {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 40px;
-    }
-
-    .calculator-form label {
-      font-weight: bold;
-      display: block;
-      margin-top: 20px;
-    }
-
-    .calculator-form input,
-    .calculator-form select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      font-size: 1rem;
-    }
-
-    .calculator-result {
-      margin-top: 40px;
-    }
-
-    .section-divider {
-      margin: 40px 0 30px;
-    }
-
-    .blue-box {
-      background-color: #e8f0ff;
-      border-radius: 8px;
-      padding: 20px;
-    }
-
-    table {
-      width: 100%;
-      font-size: 16px;
-    }
-
-    td {
-      padding: 5px 0;
-    }
-
-    .info-icon {
-      display: inline-block;
-      margin-left: 5px;
-      cursor: help;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="shared-header"></div>
-
-  <div class="container">
-    <h1>🏡 Home Price & Down Payment Estimator</h1>
-    <p>Use this calculator to estimate taxes, land improvement costs, and typical loan down payments based on your project total.</p>
-
-    <form onsubmit="event.preventDefault(); calculateTax();" class="calculator-form">
-      <label for="loanType">Loan Type:</label>
-      <select id="loanType" name="loanType">
-        <option value="landhome">Land & Home</option>
-        <option value="homeonly">Home Only</option>
+    <label>Loan Type:
+      <select id="loanType" onchange="toggleLoanOptions(); calculateEstimate()">
+        <option value="landHome">Land & Home Package</option>
+        <option value="homeOnly">Home Only</option>
       </select>
+    </label>
 
-      <label for="loanProgram">Loan Program:</label>
-      <select id="loanProgram" name="loanProgram">
-        <option value="va">VA (Government-backed)</option>
-        <option value="usda">USDA (Government-backed)</option>
-        <option value="fha">FHA (Government-backed)</option>
-        <option value="5">5% Down (Conventional)</option>
-        <option value="10">10% Down (Conventional)</option>
-        <option value="20">20% Down (Conventional)</option>
+    <label>Loan Program:
+      <select id="loanProgram" onchange="calculateEstimate()">
+        <option value="va">VA/USDA - 0% Down (Gov-Backed)</option>
+        <option value="fha">FHA - 3.5% Down (Gov-Backed)</option>
+        <option value="conv5">Conventional - 5% Down</option>
+        <option value="conv10">Conventional - 10% Down</option>
+        <option value="conv20">Conventional - 20% Down</option>
       </select>
+      <span title="Some lenders may offer 0% down with 750+ credit. $1,000 deposit is always required by dealership for site eval & permits.">❓</span>
+    </label>
 
-      <label for="price">Enter Home Price ($):</label>
-      <input type="text" id="price" name="price" placeholder="e.g. 200000" required />
+    <label>Home Price ($):
+      <input type="text" id="homePrice" oninput="formatAndCalculate(this)" placeholder="e.g. 120000">
+    </label>
 
-      <div id="land-cost-group">
-        <label for="land">Enter Land Cost ($):</label>
-        <input type="text" id="land" name="land" placeholder="e.g. 30000" />
-      </div>
+    <label>Land Improvements ($):
+      <input type="text" id="improvements" oninput="formatAndCalculate(this)" placeholder="e.g. 15000">
+    </label>
+    <p style="font-size: 0.9em; color: gray;">💡 Typical land improvements include: clearing, septic, sewer tap, water well, grading, and utility connections.</p>
 
-      <label for="improvements">Enter Land Improvements ($):</label>
-      <input type="text" id="improvements" name="improvements" placeholder="e.g. 15000" />
+    <label>County (for surtax):
+      <select id="county" onchange="calculateEstimate()">
+        <option value="default">All Counties (except Escambia)</option>
+        <option value="escambia">Escambia County</option>
+        <option value="outOfState">Out of State (AL)</option>
+      </select>
+    </label>
 
-      <p style="font-size: 14px; color: #555;">
-        💡 Common land improvements include site clearing, septic or sewer setup, water access (well or tap), grading, and utility hookups.
-      </p>
-    </form>
+    <label id="landCostLabel">Land Cost ($):
+      <input type="text" id="landCost" oninput="formatAndCalculate(this)" placeholder="e.g. 30000">
+    </label>
 
-    <div id="result" class="calculator-result"></div>
-
-    <hr class="section-divider" />
-
-    <div class="calculator-result blue-box">
-      <h3 style="text-align: center;">💰 Typical Down Payments
-        <span class="info-icon" title="Note: All loan types require a $1,000 deposit to the dealer for site evaluation and permits. Government-backed loans require land. Some buyers with 750+ credit scores may qualify for lender-specific 0% down options.">ℹ️</span>
-        <br><small>Based on the full estimated project total:</small></h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="text-align:left;">Loan Program</th>
-            <th style="text-align:right;">Down Payment</th>
-            <th style="text-align:right;">Amount to Finance</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="row-5">
-            <td>5% Down (Conventional):</td>
-            <td style="text-align:right;"><span id="dp-5">$0.00</span></td>
-            <td style="text-align:right;"><span id="loan-5">$0.00</span></td>
-          </tr>
-          <tr id="row-10">
-            <td>10% Down (Conventional):</td>
-            <td style="text-align:right;"><span id="dp-10">$0.00</span></td>
-            <td style="text-align:right;"><span id="loan-10">$0.00</span></td>
-          </tr>
-          <tr id="row-20">
-            <td>20% Down (Conventional):</td>
-            <td style="text-align:right;"><span id="dp-20">$0.00</span></td>
-            <td style="text-align:right;"><span id="loan-20">$0.00</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div style="border-top: 1px solid #ccc; margin-top: 20px; padding-top: 10px;">
+      <p><strong>Home + Improvements Subtotal:</strong> <span id="homeSubtotal">$0</span></p>
+      <p><strong>Sales Tax:</strong> <span id="taxes">$0</span></p>
+      <p><strong>Land Total:</strong> <span id="landTotal">$0</span></p>
+      <p><strong>Estimated Package Total:</strong> <span id="totalEstimate">$0</span></p>
     </div>
 
+    <p style="font-size: 0.85em; color: gray;">🔎 This is an estimate only. Final figures will vary based on lender, improvements, and real site conditions.</p>
   </div>
 
-  <script>
-    const priceInput = document.getElementById('price');
-    const landInput = document.getElementById('land');
-    const improvementsInput = document.getElementById('improvements');
-    const loanTypeSelect = document.getElementById('loanType');
-    const loanProgramSelect = document.getElementById('loanProgram');
-    const resultDiv = document.getElementById('result');
-    const landGroup = document.getElementById('land-cost-group');
+  <!-- APPLY NOW / REMINDER SECTION -->
+  <div style="flex: 1; min-width: 300px;">
+    <h2>Ready to Apply?</h2>
+    <a href="your-link-to-application-form" class="button">Apply Now</a>
+    <div style="background: #fff3cd; color: #856404; padding: 12px; margin-top: 15px; border-left: 4px solid #ffeeba;">
+      <strong>Reminder:</strong><br>
+      A $1,000 deposit is required by the dealership on all loan types to begin site evaluation and permitting.
+    </div>
+  </div>
+</div>
 
-    function parseFormattedNumber(value) {
-      return parseFloat(value.replace(/,/g, '')) || 0;
+<script>
+  const formatter = new Intl.NumberFormat("en-US");
+
+  function formatAndCalculate(input) {
+    const numeric = input.value.replace(/,/g, '');
+    if (!isNaN(numeric)) {
+      input.value = formatter.format(numeric);
+      calculateEstimate();
+    }
+  }
+
+  function toggleLoanOptions() {
+    const loanType = document.getElementById("loanType").value;
+    const loanProgram = document.getElementById("loanProgram");
+    const landCostSection = document.getElementById("landCostLabel");
+
+    loanProgram.innerHTML = "";
+    if (loanType === "landHome") {
+      loanProgram.innerHTML += `<option value="va">VA/USDA - 0% Down (Gov-Backed)</option>`;
+      loanProgram.innerHTML += `<option value="fha">FHA - 3.5% Down (Gov-Backed)</option>`;
+    }
+    loanProgram.innerHTML += `<option value="conv5">Conventional - 5% Down</option>`;
+    loanProgram.innerHTML += `<option value="conv10">Conventional - 10% Down</option>`;
+    loanProgram.innerHTML += `<option value="conv20">Conventional - 20% Down</option>`;
+
+    landCostSection.style.display = (loanType === "homeOnly") ? "none" : "block";
+    calculateEstimate();
+  }
+
+  function calculateEstimate() {
+    const clean = str => parseFloat(str.replace(/,/g, '')) || 0;
+
+    const loanType = document.getElementById("loanType").value;
+    const loanProgram = document.getElementById("loanProgram").value;
+    const county = document.getElementById("county").value;
+
+    const home = clean(document.getElementById("homePrice").value);
+    const imp = clean(document.getElementById("improvements").value);
+    const land = loanType === "landHome" ? clean(document.getElementById("landCost").value) : 0;
+
+    let govFee = 0;
+    if (["va", "fha"].includes(loanProgram)) {
+      govFee = home < 80000 ? 5000 : 10000;
     }
 
-    function formatCurrency(num) {
-      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    }
+    const taxableBase = loanType === "homeOnly" ? home + imp + govFee : home + govFee;
+    let taxRate = 0.03;
+    let surtax = (county === "escambia") ? 75 : (county === "outOfState" ? 0 : 50);
 
-    function formatInputValue(input) {
-      const raw = input.value.replace(/,/g, '');
-      if (!/^\d*$/.test(raw)) return;
-      input.value = Number(raw).toLocaleString('en-US');
-    }
+    if (county === "outOfState") taxRate = 0.055;
 
-    function attachLiveFormat(input) {
-      input.addEventListener('input', () => {
-        formatInputValue(input);
-        input.setSelectionRange(input.value.length, input.value.length);
-        calculateTax();
-      });
-    }
+    const tax = Math.round(taxableBase * taxRate + surtax);
+    const homeSubtotal = home + imp + govFee;
+    const total = homeSubtotal + tax + land;
 
-    function calculateTax() {
-      const price = parseFormattedNumber(priceInput.value);
-      const land = loanTypeSelect.value === 'homeonly' ? 0 : parseFormattedNumber(landInput.value);
-      const improvements = parseFormattedNumber(improvementsInput.value);
+    document.getElementById("homeSubtotal").innerText = formatter.format(homeSubtotal);
+    document.getElementById("taxes").innerText = formatter.format(tax);
+    document.getElementById("landTotal").innerText = formatter.format(land);
+    document.getElementById("totalEstimate").innerText = formatter.format(total);
+  }
 
-      const loanType = loanTypeSelect.value;
-      const totalTax = price * 0.03 + (loanType === 'homeonly' ? improvements * 0.03 : 0);
-
-      const total = price + improvements + land + totalTax;
-
-      resultDiv.innerHTML = `
-        <table><tbody>
-          <tr><td>🏠 Home Price:</td><td style="text-align:right;">${formatCurrency(price)}</td></tr>
-          <tr><td>💰 Taxes:</td><td style="text-align:right;">${formatCurrency(totalTax)}</td></tr>
-          <tr><td><strong>🏡 Subtotal:</strong></td><td style="text-align:right;"><strong>${formatCurrency(price + totalTax)}</strong></td></tr>
-          <tr><td>🛠️ Land Improvements:</td><td style="text-align:right;">${formatCurrency(improvements)}</td></tr>
-          ${loanType === 'landhome' ? `<tr><td>🌾 Land Cost:</td><td style="text-align:right;">${formatCurrency(land)}</td></tr>` : ''}
-          <tr><td colspan="2"><hr></td></tr>
-          <tr><td><strong>💵 Estimated Total:</strong></td><td style="text-align:right;"><strong>${formatCurrency(total)}</strong></td></tr>
-        </tbody></table>
-      `;
-
-      const updateDP = (pct) => {
-        const dp = total * (pct / 100);
-        document.getElementById(`dp-${pct}`).textContent = formatCurrency(dp);
-        document.getElementById(`loan-${pct}`).textContent = formatCurrency(total - dp);
-      };
-
-      updateDP(5);
-      updateDP(10);
-      updateDP(20);
-    }
-
-    [priceInput, landInput, improvementsInput].forEach(attachLiveFormat);
-    [loanTypeSelect, loanProgramSelect].forEach(el => el.addEventListener('change', () => {
-      landGroup.style.display = loanTypeSelect.value === 'homeonly' ? 'none' : 'block';
-      calculateTax();
-    }));
-
-    calculateTax();
-  </script>
-</body>
-</html>
+  // Initialize on load
+  toggleLoanOptions();
+</script>
