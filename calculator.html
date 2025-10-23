@@ -82,6 +82,61 @@
       opacity: 1;
     }
   </style>
+  <style media="print">
+    body {
+      background: white !important;
+      color: black !important;
+      font-size: 11pt;
+      margin: 0.5in;
+    }
+
+    .container {
+      padding: 0;
+      max-width: 100%;
+    }
+
+    .blue-box {
+      background: none !important;
+      border: none !important;
+      padding: 0;
+      box-shadow: none !important;
+    }
+
+    h1, h3, p {
+      text-align: center;
+      margin-bottom: 10px;
+      page-break-after: avoid;
+    }
+
+    input,
+    select {
+      border: none;
+      background: transparent;
+    }
+
+    .tooltip, .info-icon, #shared-header, .section-divider, .no-print {
+      display: none !important;
+    }
+
+    .calculator-form {
+      display: none;
+    }
+
+    table {
+      width: 100%;
+      font-size: 12pt;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 3px 0;
+    }
+
+    @page {
+      size: auto;
+      margin: 0.5in;
+    }
+  </style>
 </head>
 <body>
   <div id="shared-header"></div>
