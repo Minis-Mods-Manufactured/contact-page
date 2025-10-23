@@ -87,8 +87,10 @@
   <div id="shared-header"></div>
   <div class="container">
     <h1>🏡 Home Price & Down Payment Estimator</h1>
-    <p>Estimate taxes, land improvements, and down payments based on your home project total. <p></p>The dealership requires a $1,000 deposit to start your permits/site evaluation.</p>
-
+    <p>Estimate taxes, land improvements, and down payments based on your home project total. <p>
+<p style="text-align: center; margin-top: 10px;">
+  The dealership requires a $1,000 deposit to start your permits/site evaluation.
+</p>
     <form onsubmit="event.preventDefault(); calculate();" class="calculator-form">
       <label for="loanType">Loan Type:</label>
       <select id="loanType" name="loanType" onchange="updateForm()">
@@ -103,7 +105,14 @@
         <label for="land">Enter Land Cost ($):</label>
         <input type="text" id="land" name="land" placeholder="e.g. 30000" />
       </div>
-
+      
+      <!-- Home Type Section -->
+<div id="homeTypeSection">
+  <label>Home Type:</label>
+  <label><input type="radio" name="homeType" value="single" checked onchange="calculate()" /> Singlewide</label>
+  <label><input type="radio" name="homeType" value="double" onchange="calculate()" /> Doublewide</label>
+</div>
+      
       <label for="improvements">Enter Land Improvements ($):</label>
       <input type="text" id="improvements" name="improvements" placeholder="e.g. 15000" />
 
@@ -142,106 +151,118 @@
   </div>
 
   <script>
-    const loanProgram = document.getElementById('loanProgram');
-    const loanType = document.getElementById('loanType');
-    const landSection = document.getElementById('landCostSection');
-    const state = document.getElementById('state');
-    const county = document.getElementById('county');
+  const loanProgram = document.getElementById('loanProgram');
+  const loanType = document.getElementById('loanType');
+  const landSection = document.getElementById('landCostSection');
+  const state = document.getElementById('state');
+  const county = document.getElementById('county');
 
-    const price = document.getElementById('price');
-    const land = document.getElementById('land');
-    const improvements = document.getElementById('improvements');
-    const result = document.getElementById('result');
-    const financeSummary = document.getElementById('financeSummary');
+  const price = document.getElementById('price');
+  const land = document.getElementById('land');
+  const improvements = document.getElementById('improvements');
+  const result = document.getElementById('result');
+  const financeSummary = document.getElementById('financeSummary');
 
-    function parse(val) {
-      return parseFloat(val.replace(/,/g, '')) || 0;
+  function parse(val) {
+    return parseFloat(val.replace(/,/g, '')) || 0;
+  }
+
+  function format(num) {
+    return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
+
+  function updateForm() {
+    const isHomeOnly = loanType.value === 'homeonly';
+    landSection.style.display = isHomeOnly ? 'none' : 'block';
+    document.getElementById('homeTypeSection').style.display = isHomeOnly ? 'none' : 'block';
+
+    loanProgram.innerHTML = isHomeOnly
+      ? `<option value="conv5">5% down (Conventional)</option>
+         <option value="conv10">10% down (Conventional)</option>
+         <option value="conv20">20% down (Conventional)</option>`
+      : `<option value="va">VA/USDA - 0% down (Gov't-Backed)</option>
+         <option value="fha">FHA - 3.5% down (Gov't-Backed)</option>
+         <option value="conv5">5% down (Conventional)</option>
+         <option value="conv10">10% down (Conventional)</option>
+         <option value="conv20">20% down (Conventional)</option>`;
+
+    calculate();
+  }
+
+  function calculate() {
+    const homePrice = parse(price.value);
+    const landPrice = parse(land.value);
+    const impBase = parse(improvements.value);
+    const homeType = document.querySelector('input[name="homeType"]:checked')?.value || 'single';
+
+    const isFL = state.value === 'fl';
+    const isEscambia = county.value === 'escambia';
+    const isHomeOnly = loanType.value === 'homeonly';
+    const isGovBacked = loanProgram.value === 'va' || loanProgram.value === 'fha';
+
+    // Add extra land improvement costs if Gov-Backed Land & Home
+    let govAdd = 0;
+    if (!isHomeOnly && isGovBacked) {
+      govAdd = homeType === 'single' ? 5000 : 10000;
+    }
+    const imp = impBase + govAdd;
+
+    // Tax only home + improvements for home-only loans
+    const taxableAmount = homePrice + (isHomeOnly ? imp : 0);
+    let tax = 0;
+    if (isFL) {
+      tax = taxableAmount * 0.03 + (isEscambia ? 75 : 50);
+    } else {
+      tax = taxableAmount * 0.055;
     }
 
-    function format(num) {
-      return num.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    const homeSubtotal = homePrice + (isHomeOnly ? imp : 0) + tax;
+    const landSubtotal = isHomeOnly ? 0 : landPrice + imp;
+    const total = homeSubtotal + (isHomeOnly ? 0 : landSubtotal - imp); // prevent double count
+
+    // Down payment percentages
+    let dpPercent = 0;
+    switch (loanProgram.value) {
+      case 'fha': dpPercent = 0.035; break;
+      case 'conv5': dpPercent = 0.05; break;
+      case 'conv10': dpPercent = 0.10; break;
+      case 'conv20': dpPercent = 0.20; break;
+      default: dpPercent = 0; break;
     }
 
-    function updateForm() {
-      const isHomeOnly = loanType.value === 'homeonly';
-      landSection.style.display = isHomeOnly ? 'none' : 'block';
+    const dp = total * dpPercent;
+    const financed = total - dp;
 
-      loanProgram.innerHTML = isHomeOnly
-        ? `<option value="conv5">5% down (Conventional)</option>
-           <option value="conv10">10% down (Conventional)</option>
-           <option value="conv20">20% down (Conventional)</option>`
-        : `<option value="va">VA/USDA - 0% down (Government-Back)</option>
-           <option value="fha">FHA - 3.5% down (Government-Back)</option>
-           <option value="conv5">5% down (Conventional)</option>
-           <option value="conv10">10% down (Conventional)</option>
-           <option value="conv20">20% down (Conventional)</option>`;
+    result.innerHTML = `
+      <table>
+        <tbody>
+          <tr><td>🏡 Home Price:</td><td style="text-align:right">${format(homePrice)}</td></tr>
+          <tr><td>📦 Land Improvements:</td><td style="text-align:right">${format(imp)}</td></tr>
+          <tr><td>💰 Taxes & Surtax:</td><td style="text-align:right">${format(tax)}</td></tr>
+          <tr><td><strong>🏠 House Subtotal:</strong></td><td style="text-align:right"><strong>${format(homeSubtotal)}</strong></td></tr>
+          ${loanType.value === 'landhome' ? `
+            <tr><td>🌾 Land:</td><td style="text-align:right">${format(landPrice)}</td></tr>
+            <tr><td><strong>🌳 Land Subtotal:</strong></td><td style="text-align:right"><strong>${format(landSubtotal)}</strong></td></tr>
+          ` : ''}
+          <tr><td colspan="2"><hr /></td></tr>
+          <tr><td><strong>💳 Estimated Total:</strong></td><td style="text-align:right"><strong>${format(total)}</strong></td></tr>
+        </tbody>
+      </table>
+    `;
 
-      calculate();
-    }
+    financeSummary.innerHTML = `
+      <table>
+        <tbody>
+          <tr><td>Down Payment (${(dpPercent * 100).toFixed(1)}%):</td><td style="text-align:right">${format(dp)}</td></tr>
+          <tr><td>Amount to Finance:</td><td style="text-align:right">${format(financed)}</td></tr>
+        </tbody>
+      </table>
+    `;
+  }
 
-    function calculate() {
-      const homePrice = parse(price.value);
-      const landPrice = parse(land.value);
-      const imp = parse(improvements.value);
-
-      let tax = 0;
-      const isFL = state.value === 'fl';
-      const isEscambia = county.value === 'escambia';
-      const isHomeOnly = loanType.value === 'homeonly';
-
-      const taxableAmount = homePrice + (isHomeOnly ? imp : 0);
-      if (isFL) {
-        tax = taxableAmount * 0.03 + (isEscambia ? 75 : 50);
-      } else {
-        tax = taxableAmount * 0.055;
-      }
-
-      const homeSubtotal = homePrice + imp + tax;
-      const landSubtotal = isHomeOnly ? 0 : landPrice;
-      const total = homeSubtotal + landSubtotal;
-
-      let dpPercent = 0;
-      switch (loanProgram.value) {
-        case 'fha': dpPercent = 0.035; break;
-        case 'conv5': dpPercent = 0.05; break;
-        case 'conv10': dpPercent = 0.10; break;
-        case 'conv20': dpPercent = 0.20; break;
-        default: dpPercent = 0; break;
-      }
-
-      const dp = total * dpPercent;
-      const financed = total - dp;
-
-      result.innerHTML = `
-  <table>
-    <tbody>
-      <tr><td>🏡 Home Price:</td><td style="text-align:right">${format(homePrice)}</td></tr>
-      <tr><td>📦 Land Improvements:</td><td style="text-align:right">${format(imp)}</td></tr>
-      <tr><td>💰 Taxes & Surtax:</td><td style="text-align:right">${format(tax)}</td></tr>
-      <tr><td><strong>🏠 House Subtotal:</strong></td><td style="text-align:right"><strong>${format(homeSubtotal)}</strong></td></tr>
-      ${loanType.value === 'landhome' ? `
-        <tr><td>🌾 Land:</td><td style="text-align:right">${format(landPrice)}</td></tr>
-        <tr><td><strong>🌳 Land Subtotal:</strong></td><td style="text-align:right"><strong>${format(landSubtotal)}</strong></td></tr>
-      ` : ''}
-      <tr><td colspan="2"><hr /></td></tr>
-      <tr><td><strong>💳 Estimated Total:</strong></td><td style="text-align:right"><strong>${format(total)}</strong></td></tr>
-    </tbody>
-  </table>
-`;
-
-      financeSummary.innerHTML = `
-        <table>
-          <tbody>
-            <tr><td>Down Payment (${(dpPercent * 100).toFixed(1)}%):</td><td style="text-align:right">${format(dp)}</td></tr>
-            <tr><td>Amount to Finance:</td><td style="text-align:right">${format(financed)}</td></tr>
-          </tbody>
-        </table>
-      `;
-    }
-
-    [price, land, improvements].forEach(input => input.addEventListener('input', calculate));
-    [loanType, loanProgram, state, county].forEach(el => el.addEventListener('change', calculate));
-    updateForm();
-  </script>
+  [price, land, improvements].forEach(input => input.addEventListener('input', calculate));
+  [loanType, loanProgram, state, county].forEach(el => el.addEventListener('change', calculate));
+  updateForm();
+</script>
 </body>
 </html>
