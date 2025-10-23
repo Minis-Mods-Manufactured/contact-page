@@ -142,7 +142,7 @@
   <div id="shared-header"></div>
   <div class="container">
     <h1>🏡 Home Price & Down Payment Estimator</h1>
-    <p>Estimate taxes, land improvements, and down payments based on your home project total. <p>
+    <p>Estimated taxes, land improvements, and down payments based on your home project total. <p>
 <p style="text-align: center; margin-top: 10px;">
   The dealership requires a $1,000 deposit to start your permits/site evaluation.
 </p>
@@ -296,7 +296,7 @@
         <tbody>
           <tr><td>🏡 Home Price:</td><td style="text-align:right">${format(homePrice)}</td></tr>
           <tr><td>📦 Land Improvements:</td><td style="text-align:right">${format(baseImp)}</td></tr>
-          ${govAddOn > 0 ? `<tr><td>➕ Gov't-Backed Add-on:</td><td style="text-align:right">${format(govAddOn)}</td></tr>` : ''}
+          ${govAddOn > 0 ? `<tr><td>➕ Government-Backed Loan Add-on for Additional Land Improvement Requirements:</td><td style="text-align:right">${format(govAddOn)}</td></tr>` : ''}
           <tr><td>💰 Taxes & Surtax:</td><td style="text-align:right">${format(tax)}</td></tr>
           <tr><td><strong>🏠 House Subtotal:</strong></td><td style="text-align:right"><strong>${format(homeSubtotal)}</strong></td></tr>
           ${!isHomeOnly ? `
