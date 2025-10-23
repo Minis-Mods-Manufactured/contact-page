@@ -213,20 +213,21 @@
       const financed = total - dp;
 
       result.innerHTML = `
-        <table>
-          <tbody>
-            <tr><td>📦 Land Improvements:</td><td style="text-align:right">${format(imp)}</td></tr>
-            <tr><td>🏡 Home Price:</td><td style="text-align:right">${format(homePrice)}</td></tr>
-            <tr><td>💰 Taxes & Surtax:</td><td style="text-align:right">${format(tax)}</td></tr>
-            <tr><td><strong>🏠 House Subtotal:</strong></td><td style="text-align:right"><strong>${format(homeSubtotal)}</strong></td></tr>
-            ${!isHomeOnly ? `
-              <tr><td>🌾 Land:</td><td style="text-align:right">${format(landPrice)}</td></tr>
-              <tr><td><strong>🌳 Land Subtotal:</strong></td><td style="text-align:right"><strong>${format(landSubtotal)}</strong></td></tr>` : ''}
-            <tr><td colspan="2"><hr /></td></tr>
-            <tr><td><strong>💳 Estimated Total:</strong></td><td style="text-align:right"><strong>${format(total)}</strong></td></tr>
-          </tbody>
-        </table>
-      `;
+  <table>
+    <tbody>
+      <tr><td>🏡 Home Price:</td><td style="text-align:right">${format(homePrice)}</td></tr>
+      <tr><td>📦 Land Improvements:</td><td style="text-align:right">${format(imp)}</td></tr>
+      <tr><td>💰 Taxes & Surtax:</td><td style="text-align:right">${format(tax)}</td></tr>
+      <tr><td><strong>🏠 House Subtotal:</strong></td><td style="text-align:right"><strong>${format(homeSubtotal)}</strong></td></tr>
+      ${loanType.value === 'landhome' ? `
+        <tr><td>🌾 Land:</td><td style="text-align:right">${format(landPrice)}</td></tr>
+        <tr><td><strong>🌳 Land Subtotal:</strong></td><td style="text-align:right"><strong>${format(landSubtotal)}</strong></td></tr>
+      ` : ''}
+      <tr><td colspan="2"><hr /></td></tr>
+      <tr><td><strong>💳 Estimated Total:</strong></td><td style="text-align:right"><strong>${format(total)}</strong></td></tr>
+    </tbody>
+  </table>
+`;
 
       financeSummary.innerHTML = `
         <table>
