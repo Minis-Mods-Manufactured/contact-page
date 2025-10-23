@@ -107,11 +107,14 @@
       </div>
       
       <!-- Home Type Section -->
-<div id="homeTypeSection">
-  <label>Home Type:</label>
-  <label><input type="radio" name="homeType" value="single" checked onchange="calculate()" /> Singlewide</label>
-  <label><input type="radio" name="homeType" value="double" onchange="calculate()" /> Doublewide</label>
-</div>
+<label for="homeType">Home Type:</label>
+<select id="homeType" name="homeType">
+  <option value="double">Doublewide</option>
+  <option value="single">Singlewide</option>
+</select>
+<small style="display:block; margin-top:4px; color:gray;">
+  (For government-backed land/home loans, we add $5,000 to Singlewides and $10,000 to Doublewides for additional requirements. This amount is added to land improvements but is not taxed.)
+</small>
       
       <label for="improvements">Enter Land Improvements ($):</label>
       <input type="text" id="improvements" name="improvements" placeholder="e.g. 15000" />
